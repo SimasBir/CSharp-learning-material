@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleConsoleApp1
+namespace SampleConsoleApp1.Animals
 {
     public class Dog
     {
