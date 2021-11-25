@@ -5,12 +5,12 @@
         static void Main(string[] args)
         {
             //Data types
-            int number = 5;
-            string text = "text";
-            char singleChar = 'A';
-            bool boolValue = false;
-            double doubleValue = 5.432;
-            DateTime dateTimeValue = DateTime.Now;
+            //int number = 5;
+            //string text = "text";
+            //char singleChar = 'A';
+            //bool boolValue = false;
+            //double doubleValue = 5.432;
+            //DateTime dateTimeValue = DateTime.Now;
 
             var arrayOfInts1 = new[] { 1, 2, 3, 4, 5 }; /*Reciau naudojamas, nes negalima prideti values*/
             arrayOfInts1[0] = 5;
@@ -83,7 +83,7 @@
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Console.WriteLine("The input format is not correct");
                     }
