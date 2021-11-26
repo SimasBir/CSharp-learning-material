@@ -5,15 +5,15 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C1 first app", "SampleConsoleApp1\C1 first app.csproj", "{33DBDD64-56D3-49EE-92B5-2A9F21483AD0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C2", "WorkingWithLists\C2.csproj", "{858820B7-7B3D-4CB7-A015-B6EC0736D934}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C5_C2 To do list", "WorkingWithLists\C5_C2 To do list.csproj", "{858820B7-7B3D-4CB7-A015-B6EC0736D934}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C3 Uzdaviniai", "Uzdaviniai 1\C3 Uzdaviniai.csproj", "{C1C13582-2033-4530-A4B8-652F1D8313BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4_1 OOP", "OOP\C4_1 OOP.csproj", "{62749CD2-FF5F-42F7-A321-52BAF49F7D8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C4_1 OOP", "OOP\C4_1 OOP.csproj", "{62749CD2-FF5F-42F7-A321-52BAF49F7D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4_1 Uzdaviniai", "Uzdaviniai 2\C4_1 Uzdaviniai.csproj", "{6419CE54-6EAF-4B8F-AE8A-02DD7ACD3456}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C4_1 Uzdaviniai", "Uzdaviniai 2\C4_1 Uzdaviniai.csproj", "{6419CE54-6EAF-4B8F-AE8A-02DD7ACD3456}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C4_2 OOP", "C4_2 OOP\C4_2 OOP.csproj", "{3EE2ABE0-7489-4026-8B25-68BBBD92E433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C4_2 OOP", "C4_2 OOP\C4_2 OOP.csproj", "{3EE2ABE0-7489-4026-8B25-68BBBD92E433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

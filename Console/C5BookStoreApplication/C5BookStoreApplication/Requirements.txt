@@ -1,0 +1,23 @@
+﻿A console applicationfor storing books:
+A book should have:
+Title: string
+Description: string
+Amount: int
+
+The bookstores should have the following commands:
+Add: 
+"Please enter the name:" 
+<name>
+"Please enter the description:" 
+<description>
+"Please enter the amount:" 
+<amount>
+
+List:
+It should output all the info about the books
+foreach -> "title: {title}, description: {description}, amount: {amount}"
+
+Additional, optional requirements:
+1. Only allow unique names in the store
+2. Place the code in github
+3. Delete functionality

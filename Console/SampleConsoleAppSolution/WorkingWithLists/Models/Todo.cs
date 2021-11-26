@@ -8,12 +8,17 @@ namespace WorkingWithLists.Models
 {
     public class Todo
     {
-        // variables/field
-        public string NameVariable = "";
+        //constructor - ctor 
+        public Todo(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
 
         // property
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Completed { get; set; }
+
     }
 }
