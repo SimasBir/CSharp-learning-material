@@ -30,8 +30,6 @@ namespace C5BookStoreApplication
                             }
 
                         }
-                        // var uniqueCounter= library.Where(x => x.Title == Title).ToList().Count;
-                        // Console.WriteLine(uniqueCounter);
 
                         Console.WriteLine("Enter the description");
                         string description = Console.ReadLine();
@@ -74,20 +72,20 @@ namespace C5BookStoreApplication
                         try
                         {
                             string update = Console.ReadLine();
-                            //library = library.Where(t => t.Title == update).ToList();
-                            bool alreadyExist = library.Exists(t=>t.Title==update);
+                            bool alreadyExist = library.Exists(t => t.Title == update);
                             if (alreadyExist)
                             {
-                            Console.WriteLine("Enter new description:");
-                            string newDesc = Console.ReadLine();
-                            Console.WriteLine("Enter new amount:");
-                            int newAm = Convert.ToInt32(Console.ReadLine());
-                            if (newDesc != "")
-                            {
-                                library.Where(t => t.Title == update).ToList().ForEach(x => x.Description = newDesc);
-                            }
-
-                            library.Where(t => t.Title == update).ToList().ForEach(x => x.Amount = newAm);
+                                Console.WriteLine("Enter new description:");
+                                string newDesc = Console.ReadLine();
+                                if (newDesc != "")
+                                {
+                                    library.Where(t => t.Title == update).ToList().ForEach(x => x.Description = newDesc);
+                                    Console.WriteLine("Description changed");
+                                }
+                                Console.WriteLine("Enter new amount:");
+                                int newAm = Convert.ToInt32(Console.ReadLine());
+                                library.Where(t => t.Title == update).ToList().ForEach(x => x.Amount = newAm);
+                                Console.WriteLine("Amount updated");
                             }
                             else
                             {
@@ -97,7 +95,7 @@ namespace C5BookStoreApplication
                         }
                         catch
                         {
-                            Console.WriteLine("Update is impossible");
+                            Console.WriteLine("New amount must be a number");
                             break;
                         }
                         break;
