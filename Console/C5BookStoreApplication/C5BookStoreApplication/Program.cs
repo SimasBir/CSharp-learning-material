@@ -23,7 +23,7 @@ namespace C5BookStoreApplication
                         string title = Console.ReadLine();
                         foreach (var book in library)
                         {
-                            if (title == book.Title)
+                            if (title.ToLower() == book.Title.ToLower())
                             {
                                 Console.WriteLine("Such book already exists, try again");
                                 goto End;
@@ -62,7 +62,7 @@ namespace C5BookStoreApplication
                     case "delete":
                         Console.WriteLine("Enter the title you wish to delete:");
                         string delete = Console.ReadLine();
-                        library = library.Where(t => t.Title != delete).ToList();
+                        library = library.Where(t => t.Title.ToLower() != delete.ToLower()).ToList();
                         //library = library.removeAll(x => x.Name == delete)
                         break;
 
@@ -72,19 +72,19 @@ namespace C5BookStoreApplication
                         try
                         {
                             string update = Console.ReadLine();
-                            bool alreadyExist = library.Exists(t => t.Title == update);
+                            bool alreadyExist = library.Exists(t => t.Title.ToLower() == update.ToLower());
                             if (alreadyExist)
                             {
                                 Console.WriteLine("Enter new description:");
                                 string newDesc = Console.ReadLine();
                                 if (newDesc != "")
                                 {
-                                    library.Where(t => t.Title == update).ToList().ForEach(x => x.Description = newDesc);
+                                    library.Where(t => t.Title.ToLower() == update.ToLower()).ToList().ForEach(x => x.Description = newDesc);
                                     Console.WriteLine("Description changed");
                                 }
                                 Console.WriteLine("Enter new amount:");
                                 int newAm = Convert.ToInt32(Console.ReadLine());
-                                library.Where(t => t.Title == update).ToList().ForEach(x => x.Amount = newAm);
+                                library.Where(t => t.Title.ToLower() == update.ToLower()).ToList().ForEach(x => x.Amount = newAm);
                                 Console.WriteLine("Amount updated");
                             }
                             else
