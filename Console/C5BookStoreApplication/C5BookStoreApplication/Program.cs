@@ -15,7 +15,7 @@ namespace C5BookStoreApplication
             {
                 Console.WriteLine("Write your commands (add, list, delete, update or exit): ");
                 string command = Console.ReadLine();
-                switch (command)
+                switch (command.ToLower())
                 {
                     case "add":
 
