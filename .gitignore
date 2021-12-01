@@ -386,3 +386,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+/Console/C5BookStoreApplication/C7BookStoreOOPsolution
+/Console/1030ShopAppExample

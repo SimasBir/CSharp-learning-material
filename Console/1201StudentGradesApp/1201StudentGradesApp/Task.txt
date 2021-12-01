@@ -1,0 +1,25 @@
+﻿sukurti klases
+
+Student{
+int id
+string name
+string surame
+Grade grades
+}
+
+Grade{
+List<int> math
+List<int> biology
+}
+
+StudentConsole{ //jei reikia
+klasė kurioje aprašysite įvairius metodus.
+}
+
+funkctionalumas:
+1. leisti sukurti studentą.
+pažymiai - panaudokite random, kad jis prigeneruotų pažymių iš dėstomų dalykų. Po 5-7 pažymius kiekvienai pamokai.
+2. leisti pamatyti studentų sąrašą.
+3. leisti pasirinkti studentą. pasirinkus - matyti sąrašą dėstomų dalykų bei pažymių.
+Kam pavyks - ir dėstomų dalykų vidurkius.
+4. pabaigti studento CRUD
