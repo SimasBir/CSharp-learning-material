@@ -1,10 +1,12 @@
-﻿sukurti klases
+﻿ukurti klases
 
 Student{
-int id
-string name
-string surame
-Grade grades
+static int IdCounter, default 0;
+int Id
+string Name
+string Surame
+int ClassGrade
+Grade Grades
 }
 
 Grade{
@@ -14,6 +16,7 @@ List<int> biology
 
 StudentConsole{ //jei reikia
 klasė kurioje aprašysite įvairius metodus.
+pvz AddStudent, metodas kuris surenka info iš konsolės, sukuria objektą ir jį gražina į ten kue buvo iškviestas
 }
 
 funkctionalumas:
@@ -23,3 +26,8 @@ pažymiai - panaudokite random, kad jis prigeneruotų pažymių iš dėstomų da
 3. leisti pasirinkti studentą. pasirinkus - matyti sąrašą dėstomų dalykų bei pažymių.
 Kam pavyks - ir dėstomų dalykų vidurkius.
 4. pabaigti studento CRUD
+5. StudentConsole medotas kuris priima 2 kintamuosius: StudentList bei string, mokomojo dalyko pavadinimą.
+Šis metodas suranda studentą su geriausiu vidurkiu pagal pasirinktą pamoką ir jį gražina, arba atspausdina (your call)
+6. struktūra kaip 5to, tik kad randamas studentas su aukščiausiu suminiu vidurkiu.
+7. pakartoti 5 ir 6 punktus, bet ieškoti ne geriausio studento, o geriausio studento x klasėje. t.y metodas priims 3čią
+parametrą, klasę, ir bus ieškomas gabiausias biologijos trečiokas pvz.

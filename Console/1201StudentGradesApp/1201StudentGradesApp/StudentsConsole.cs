@@ -23,10 +23,12 @@ namespace _1201StudentGradesApp
             string name = Console.ReadLine();
             Console.WriteLine("Enter surname");
             string surname = Console.ReadLine();
+            Console.WriteLine("Enter class");
+            int classGrade = Convert.ToInt32(Console.ReadLine());
 
             //var grades = Console.ReadLine();
 
-            _student.Add(name, surname); //, grades
+            _student.Add(name, surname, classGrade); //, grades
         }
 
         public void ExecuteList()
@@ -35,24 +37,49 @@ namespace _1201StudentGradesApp
             var info = "";
             foreach (var student in students)
             {
-                var studentInfo = $"Id:{student.Id}, name: {student.Name}, surname: {student.Surname}\n"; //, grades: {student.Grades}
+                var studentInfo =
+                    $"Id:{student.Id}, " +
+                    $"name: {student.Name}, " +
+                    $"surname: {student.Surname}, " +
+                    $"class: {student.ClassGrade}\n";
+
                 info = info + studentInfo;
             }
             Console.WriteLine(info);
         }
-  
+
         public void ExecuteChoose()
         {
             Console.WriteLine("Which student Id would you like to select?");
             try
             {
                 int Id = Convert.ToInt32(Console.ReadLine());
-                var student = _student.Choose(Id);
-                foreach (var stud in student)
+                var selectedStudent = _student.Choose(Id)[0];
+                string mathGrades = "";
+                string biologyGrades = "";
+                var math = selectedStudent.Grades.math;
+                var biology = selectedStudent.Grades.biology;
+
+                foreach (var grade in math)
                 {
-                    Console.WriteLine($"Id:{stud.Id}, name: {stud.Name}, surname: {stud.Surname}");
+                    mathGrades = mathGrades + grade.ToString() + ", ";
                 }
+                foreach (var grade in biology)
+                {
+                    biologyGrades = biologyGrades + grade.ToString() + ", ";
+                }
+
+                Console.WriteLine(
+                        $"Id:{selectedStudent.Id}, " +
+                        $"name: {selectedStudent.Name}, " +
+                        $"surname: {selectedStudent.Surname}, " +
+                        $"class: {selectedStudent.ClassGrade}, " +
+                        $"math grades: {mathGrades}" +
+                        $"biology grades: {biologyGrades}");
+                Console.WriteLine($"Math average: {selectedStudent.Grades.math.Average()}");
+                Console.WriteLine($"Biology average: {selectedStudent.Grades.biology.Average()}");
             }
+
             catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
@@ -93,6 +120,11 @@ namespace _1201StudentGradesApp
             {
                 Console.WriteLine(ex.Message);
             }
+
+        }
+        public void ExecuteTest()
+        {
+
         }
     }
 }

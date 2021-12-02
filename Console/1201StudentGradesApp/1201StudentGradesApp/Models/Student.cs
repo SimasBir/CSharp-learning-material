@@ -8,32 +8,53 @@ namespace _1201StudentGradesApp.Models
 {
     public class Student
     {
-        private static int IdCounter = 1;
+        private static int IdCounter = 0;
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Grade Grades { get; set; }
+        public int ClassGrade { get; set; }
+        public Grade Grades = new Grade();
 
         private List<Student> _studentBody = new List<Student>();
 
-        public void Add(string name, string surname) //, Grade grades
+        public Student()
+        {
+            Id = IdCounter++;
+            Grades.math = GenerateGrades();
+            Grades.biology = GenerateGrades();
+        }
+
+        public void Add(string name, string surname, int classGrade) 
         {
             var student = new Student()
             {
-                Id = IdCounter++,
                 Name = name,
                 Surname = surname,
-                //Grades = grades,
+                ClassGrade = classGrade,
+
             };
 
             _studentBody.Add(student);
         }
 
+        private List<int> GenerateGrades()
+        {
+            List<int> grades = new List<int>();
+            Random random = new Random();
+
+            for (int i = 0; i < 7; i++)
+            {
+                grades.Add(random.Next(1, 11));
+            }
+
+            return grades;
+        }
 
         public List<Student> GetAll()
         {
             return _studentBody;
         }
+
         private bool Check(int Id)
         {
             bool IdExists = _studentBody.Exists(x => x.Id == Id);
@@ -72,6 +93,17 @@ namespace _1201StudentGradesApp.Models
             {
                 _studentBody.Where(t => t.Id == Id).ToList().ForEach(x => x.Name = name);
                 _studentBody.Where(t => t.Id == Id).ToList().ForEach(x => x.Surname = surname);
+            }
+            else
+            {
+                throw new ArgumentException("Such Id doesn't exist");
+            }
+        }
+        public void Average(int Id,string subject)
+        {
+            if (Check(Id))
+            {
+
             }
             else
             {
