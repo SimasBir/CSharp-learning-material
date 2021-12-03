@@ -5,7 +5,7 @@ var studentsConsole = new StudentsConsole();
 
 while(true)
 {
-    Console.WriteLine("enter command");
+    Console.WriteLine("enter command (add,list,choose,update,delete)");
     string command = Console.ReadLine();
     switch (command)
     {
@@ -27,5 +27,4 @@ while(true)
         default:
             break;
     }
-    
 }

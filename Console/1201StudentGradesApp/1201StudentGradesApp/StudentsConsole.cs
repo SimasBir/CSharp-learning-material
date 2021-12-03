@@ -26,9 +26,8 @@ namespace _1201StudentGradesApp
             Console.WriteLine("Enter class number");
             try
             {
-            int classGrade = Convert.ToInt32(Console.ReadLine());
-            //var grades = Console.ReadLine();
-            _student.Add(name, surname, classGrade); //, grades
+                int classGrade = Convert.ToInt32(Console.ReadLine());
+                _student.Add(name, surname, classGrade); //, grades
 
             }
             catch (Exception ex)
@@ -43,15 +42,15 @@ namespace _1201StudentGradesApp
             var info = "";
             foreach (var student in students)
             {
-                var studentInfo =
+                Console.WriteLine(
                     $"Id:{student.Id}, " +
                     $"name: {student.Name}, " +
                     $"surname: {student.Surname}, " +
-                    $"class: {student.ClassGrade}\n";
+                    $"class: {student.ClassGrade}");
 
-                info = info + studentInfo;
+                //info = info + studentInfo;
             }
-            Console.WriteLine(info);
+            //Console.WriteLine(info);
         }
 
         public void ExecuteChoose()
@@ -61,10 +60,11 @@ namespace _1201StudentGradesApp
             {
                 int Id = Convert.ToInt32(Console.ReadLine());
                 var selectedStudent = _student.Choose(Id)[0];
-                string mathGrades = "";
+                string mathGrades = ""; //sena varianta palieku kaip reference
+                string mathGrades2 = String.Join(", ", selectedStudent.Grades.Math); //kitas,geresnis variantas
                 string biologyGrades = "";
-                var math = selectedStudent.Grades.math;
-                var biology = selectedStudent.Grades.biology;
+                var math = selectedStudent.Grades.Math;
+                var biology = selectedStudent.Grades.Biology;
 
                 foreach (var grade in math)
                 {
@@ -82,8 +82,9 @@ namespace _1201StudentGradesApp
                         $"class: {selectedStudent.ClassGrade}, " +
                         $"math grades: {mathGrades}" +
                         $"biology grades: {biologyGrades}");
-                Console.WriteLine($"Math average: {selectedStudent.Grades.math.Average()}");
-                Console.WriteLine($"Biology average: {selectedStudent.Grades.biology.Average()}");
+                Console.WriteLine($"Math average: {selectedStudent.Grades.Math.Average()}");
+                Console.WriteLine($"Biology average: {selectedStudent.Grades.Biology.Average()}");
+                Console.WriteLine(mathGrades2);
             }
 
             catch (ArgumentException ex)
@@ -120,7 +121,10 @@ namespace _1201StudentGradesApp
                 Console.WriteLine("Enter new surname");
                 string surname = Console.ReadLine();
 
-                _student.Update(Id, name, surname);
+                Console.WriteLine("Enter new class number");
+                int classGrade = Convert.ToInt32(Console.ReadLine());
+
+                _student.Update(Id, name, surname, classGrade);
             }
             catch (ArgumentException ex)
             {
@@ -128,9 +132,9 @@ namespace _1201StudentGradesApp
             }
 
         }
-        public void ExecuteTest()
-        {
+        //public void ExecuteTest()
+        //{
 
-        }
+        //}
     }
 }

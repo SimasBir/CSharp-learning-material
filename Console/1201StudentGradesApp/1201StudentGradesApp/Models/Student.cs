@@ -20,8 +20,8 @@ namespace _1201StudentGradesApp.Models
         public Student()
         {
             Id = IdCounter++;
-            Grades.math = GenerateGrades();
-            Grades.biology = GenerateGrades();
+            Grades.Math = GenerateGrades();
+            Grades.Biology = GenerateGrades();
         }
 
         public void Add(string name, string surname, int classGrade) 
@@ -87,12 +87,13 @@ namespace _1201StudentGradesApp.Models
             }
         }
 
-        public void Update(int Id, string name, string surname)
+        public void Update(int Id, string name, string surname, int classGrade)
         {
             if (Check(Id))
             {
                 _studentBody.Where(t => t.Id == Id).ToList().ForEach(x => x.Name = name);
                 _studentBody.Where(t => t.Id == Id).ToList().ForEach(x => x.Surname = surname);
+                _studentBody.Where(t => t.Id == Id).ToList().ForEach(x => x.ClassGrade = classGrade);
             }
             else
             {
