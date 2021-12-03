@@ -31,7 +31,6 @@ namespace _1201StudentGradesApp.Models
                 Name = name,
                 Surname = surname,
                 ClassGrade = classGrade,
-
             };
 
             _studentBody.Add(student);
@@ -41,8 +40,9 @@ namespace _1201StudentGradesApp.Models
         {
             List<int> grades = new List<int>();
             Random random = new Random();
+            var amount = random.Next(5, 8);
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < amount; i++)
             {
                 grades.Add(random.Next(1, 11));
             }

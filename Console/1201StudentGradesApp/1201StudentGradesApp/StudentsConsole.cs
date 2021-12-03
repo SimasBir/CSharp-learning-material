@@ -23,12 +23,18 @@ namespace _1201StudentGradesApp
             string name = Console.ReadLine();
             Console.WriteLine("Enter surname");
             string surname = Console.ReadLine();
-            Console.WriteLine("Enter class");
+            Console.WriteLine("Enter class number");
+            try
+            {
             int classGrade = Convert.ToInt32(Console.ReadLine());
-
             //var grades = Console.ReadLine();
-
             _student.Add(name, surname, classGrade); //, grades
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Class number must be an integer");
+            }
         }
 
         public void ExecuteList()
