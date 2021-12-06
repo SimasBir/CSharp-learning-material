@@ -3,9 +3,9 @@ using _1201StudentGradesApp;
 
 var studentsConsole = new StudentsConsole();
 
-while(true)
+while (true)
 {
-    Console.WriteLine("enter command (add,list,choose,update,delete)");
+    Console.WriteLine("enter command (add,list,choose,update,delete,bestInClass)");
     string command = Console.ReadLine();
     switch (command)
     {
@@ -23,6 +23,9 @@ while(true)
             break;
         case "delete":
             studentsConsole.ExecuteDelete();
+            break;
+        case "bestInClass":
+            studentsConsole.ExecuteBestInClass();
             break;
         default:
             break;

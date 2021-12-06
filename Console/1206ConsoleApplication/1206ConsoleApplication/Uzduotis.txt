@@ -1,0 +1,7 @@
+﻿1. sukurti NPC klasę su fieldais ir attack() metodu. pastarasis vavy turės random laimėjom/nelaimėjom
+2. sukurti 3 klases kurios paveldi NPC klasę.
+3. paleisti while loopą.
+jame kas kartą yesmesti random nuo 1 iki 3, ir atitinkamai pasiūlyti atakuoti vieną iš 3 priešų. (galim sutikti
+arba nesutikti)
+4. atspausdinam ar pavyko įveikti priešą.
+5. loopas pasileidžia vėl, ir vėl kartojame while turinį.

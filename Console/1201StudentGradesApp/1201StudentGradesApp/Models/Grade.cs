@@ -5,12 +5,27 @@
         public List<int> Math { get; set; }
         public List<int> Biology { get; set; }
 
-        private List<Grade> _grades = new List<Grade>();
-        private List<int> _subGrades = new List<int>();
+        //private List<Grade> _grades = new List<Grade>();
+        //private List<int> _subGrades = new List<int>();
 
-        public List<int> Grades(string subject)
+        //public List<int> Grades(string subject)
+        //{
+        //    return _subGrades;
+        //}
+
+        public double GetMathAverage()
         {
-            return _subGrades;
+            return Math.Average();
+        }
+
+        public double GetBiologyAverage()
+        {
+            return Biology.Average();
+        }
+
+        public double GetAverage()
+        {
+            return (GetMathAverage() + GetBiologyAverage()) / 2.0;
         }
 
 
