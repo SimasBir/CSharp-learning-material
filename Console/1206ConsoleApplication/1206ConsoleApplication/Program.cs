@@ -82,7 +82,6 @@ namespace _1206ConsoleApplication
 
         static void Dead()
         {
-
             Console.WriteLine("You died");
             Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             Console.WriteLine();
