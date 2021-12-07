@@ -1,0 +1,7 @@
+﻿@model TaskListModel
+
+<ul>  
+@foreach(var taskModel in @Model.Tasks){
+    <li>@taskModel.Name</li>
+}
+ </ul>

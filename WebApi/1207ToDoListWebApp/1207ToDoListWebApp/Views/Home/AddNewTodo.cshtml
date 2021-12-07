@@ -1,11 +1,9 @@
-﻿@model PersonModel
- 
+﻿@model TaskModel
 
 @using (Html.BeginForm("SendSubmitData", "Home", FormMethod.Post))
 {
-    
     @Html.LabelFor(a => a.Name)
     @Html.TextBoxFor(a => a.Name)
+        
     <input type="submit" value="Submit"/>
-
 }
