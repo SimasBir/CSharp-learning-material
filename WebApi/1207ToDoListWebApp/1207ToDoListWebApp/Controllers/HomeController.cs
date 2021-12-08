@@ -14,11 +14,13 @@ namespace _1207ToDoListWebApp.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly DataService _dataService;
+        private readonly TxtServiceW _txtService;
 
-        public HomeController(ILogger<HomeController> logger, DataService dataService)
+        public HomeController(ILogger<HomeController> logger, DataService dataService, TxtServiceW txtService)
         {
             _logger = logger;
             _dataService = dataService;
+            _txtService = txtService;
         }
 
         public IActionResult Index()
@@ -35,7 +37,8 @@ namespace _1207ToDoListWebApp.Controllers
         {
             var emptyModel = new TaskModel()
             {
-                Name = ""
+                Name = "",
+                Description = ""
             };
             return View(emptyModel);
         }
@@ -43,12 +46,44 @@ namespace _1207ToDoListWebApp.Controllers
         {
             _dataService.Add(model);
             return RedirectToAction("AddNewTodo");
+
         }
 
         public IActionResult DisplayTodoList()
         {
             var tasks = _dataService.GetAll();
+            var taskList = new TaskListModel()
+            {
+                Tasks = tasks
+            };
+            return View(taskList);
+        }
 
+        public IActionResult ToTextFile()
+        {
+            var emptyModel = new TaskModel()
+            {
+                Name = "",
+                Description = ""
+            };
+            return View(emptyModel);
+        }
+
+        public IActionResult SendSubmitText(TaskModel model)
+        {
+            _txtService.Add(model);
+            return RedirectToAction("ToTextFile");
+        }
+        public IActionResult SendDeleteText(TaskModel model)
+        {
+            _txtService.Delete(model);
+            return RedirectToAction("ToTextFile");
+        }
+
+        public IActionResult TextFile()
+        {
+
+            var tasks = _txtService.GetAll();
             var taskList = new TaskListModel()
             {
                 Tasks = tasks

@@ -1,0 +1,25 @@
+﻿@model TaskModel
+
+@using (Html.BeginForm("SendSubmitText", "Home", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    <br />
+    @Html.LabelFor(a => a.Description)
+    @Html.TextBoxFor(a => a.Description)
+    <br />
+        
+    <input type="submit" value="Submit"/>
+
+}
+@using (Html.BeginForm("SendDeleteText", "Home", FormMethod.Post))
+{
+    <br />
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    <br />
+
+        
+    <input type="submit" value="Delete"/>
+
+}

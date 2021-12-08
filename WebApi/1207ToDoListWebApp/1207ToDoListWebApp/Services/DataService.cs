@@ -11,7 +11,7 @@ namespace _1207ToDoListWebApp.Services
     {
         private List<TaskModel> tasks = new List<TaskModel>()
         {
-            new TaskModel() { Name = "test one"}
+            new TaskModel() { Name = "Test name one", Description = "Description 1"}
         };
 
         public List<TaskModel> GetAll()
@@ -21,7 +21,12 @@ namespace _1207ToDoListWebApp.Services
 
         public void Add(TaskModel taskModel)
         {
-            tasks.Add(taskModel);
+            if (taskModel.Name != null)
+            {
+                tasks.Add(taskModel);
+            }
+
         }
+
     }
 }

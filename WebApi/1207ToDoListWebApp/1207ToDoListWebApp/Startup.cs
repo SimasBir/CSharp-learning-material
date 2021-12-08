@@ -25,6 +25,7 @@ namespace _1207ToDoListWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<DataService>();
+            services.AddSingleton<TxtServiceW>();
             services.AddControllersWithViews();
         }
 
@@ -52,7 +53,7 @@ namespace _1207ToDoListWebApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=DisplayTodoList}/{id?}");
             });
         }
     }
