@@ -1,0 +1,7 @@
+﻿@model List<ZooModel>
+
+<ul>  
+@foreach(var taskModel in @Model){
+    <li>@taskModel.Name - @taskModel.Description - @taskModel.Gender - @taskModel.Age</li>
+}
+ </ul>
