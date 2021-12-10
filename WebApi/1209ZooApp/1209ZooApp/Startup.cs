@@ -24,7 +24,8 @@ namespace _1209ZooApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ZooService>();
+            services.AddTransient<ZooService>(); // sunaikinamas - reiskia, kad galioja tik kol naudojam
+            //services.AddSingleton<ZooService>(); //nesunaikinamas - reiskia, kad galios visa programos laikotarpi, nesunaikinamas (kaupem atmintyje)
             services.AddTransient<SqlConnection>(_ => new SqlConnection(Configuration["ConnectionStrings:DefaultConnection"]));
             services.AddControllersWithViews();
 
