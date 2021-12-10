@@ -45,11 +45,6 @@ namespace _1209ZooApp
             {
                 sqlConnection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                //if (name != null)
-                //{
-                //    string sqlCommand = $"UPDATE dbo.Zoo SET Name = '{model.Name}', Description = '{model.Description}', Gender = '{model.Gender}', Age = {model.Age} WHERE Name = '{model.Name}'";
-                //    adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
-                //}
                 string sqlCommand = $"UPDATE dbo.Zoo SET Description = '{model.Description}', Gender = '{model.Gender}', Age = {model.Age} WHERE Name = '{model.Name}'";
                 adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
                 adapter.InsertCommand.ExecuteNonQuery();

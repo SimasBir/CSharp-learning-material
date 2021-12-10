@@ -1,12 +1,6 @@
 ﻿@model List<ZooModel>
 @foreach(var taskModel in @Model){
 <ul class="list-group">  
-
     <li class="list-group-item">@taskModel.Name - @taskModel.Description - @taskModel.Gender - @taskModel.Age</li>
-@*    <li class="list-group-item .flex-fill ">@taskModel.Name</li>
-    <li class="list-group-item .flex-fill ">@taskModel.Description</li>
-    <li class="list-group-item .flex-fill ">@taskModel.Gender</li>
-    <li class="list-group-item .flex-fill ">@taskModel.Age</li>
-    <br/>*@
  </ul>
 }
