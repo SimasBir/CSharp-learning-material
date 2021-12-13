@@ -4,22 +4,22 @@
 {
     <h3>Add</h3>
     <div>
-        @Html.LabelFor(a => a.FirstName)
+        Name 
         @Html.Raw(" ")
         @Html.TextBoxFor(a => a.FirstName)
     </div>
     <div>
-        @Html.LabelFor(a => a.LastName)
+        Surname
         @Html.Raw(" ")
         @Html.TextBoxFor(a => a.LastName)
     </div>
     <div>
-        @Html.LabelFor(a => a.Amount)
+        @Html.LabelFor(a => a.Amount) to donate
         @Html.Raw(" ")
         @Html.TextBoxFor(a => a.Amount)
     </div>
     <div>
-        @Html.LabelFor(a => a.ZooId)
+        Animal you wish to donate for (enter ID):
         @Html.Raw(" ")
         @Html.TextBoxFor(a => a.ZooId)
     </div>
