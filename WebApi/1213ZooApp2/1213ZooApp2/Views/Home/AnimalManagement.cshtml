@@ -1,0 +1,72 @@
+﻿@model ZooModel2
+
+@using (Html.BeginForm("ZooSendSubmit", "Home", FormMethod.Post))
+{
+    <h3>Add</h3>
+    <div>
+        @Html.LabelFor(a => a.Name)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Name)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Description)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Description)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Gender)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Gender)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Age)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Age)
+    </div>
+
+    <input type="submit" value="Submit" />
+
+}
+@using (Html.BeginForm("ZooSendDelete", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Delete</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+
+    <input type="submit" value="Delete" />
+}
+
+@using (Html.BeginForm("ZooSendUpdate", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Update</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+        <div>
+        New @Html.LabelFor(a => a.Name)
+        @Html.TextBoxFor(a => a.Name)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Description)
+        @Html.TextBoxFor(a => a.Description)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Gender)
+        @Html.TextBoxFor(a => a.Gender)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Age)
+        @Html.TextBoxFor(a => a.Age)
+    </div>
+
+    <input type="submit" value="Update" />
+
+}

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<ZooModel2>
+@foreach (var taskModel in @Model)
+{
+    <ul class="list-group list-group-horizontal">
+
+        <li class="list-group-item .flex-fill">@taskModel.Id</li>
+        <li class="list-group-item">@taskModel.Name - @taskModel.Description - @taskModel.Gender - @taskModel.Age</li>
+    </ul>
+}
+
+@using (Html.BeginForm("ZooClearReset", "Home", FormMethod.Post))
+{
+    <input type="submit" value="Clear and reset table" />
+}

@@ -1,0 +1,77 @@
+﻿@model SponsorModel
+
+@using (Html.BeginForm("SponsorsSendSubmit", "Home", FormMethod.Post))
+{
+    <h3>Add</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.FirstName)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.FirstName)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.LastName)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.LastName)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Amount)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Amount)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.ZooId)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.ZooId)
+    </div>
+
+    <input type="submit" value="Submit" />
+
+}
+@using (Html.BeginForm("SponsorsSendDelete", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Delete</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+
+    <input type="submit" value="Delete" />
+}
+
+@using (Html.BeginForm("SponsorsSendUpdate", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Update</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+        <div>
+        New @Html.LabelFor(a => a.FirstName)
+        @Html.TextBoxFor(a => a.FirstName)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.LastName)
+        @Html.TextBoxFor(a => a.LastName)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Amount)
+        @Html.TextBoxFor(a => a.Amount)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.ZooId)
+        @Html.TextBoxFor(a => a.ZooId)
+    </div>
+
+    <input type="submit" value="Update" />
+
+}
