@@ -40,6 +40,10 @@
 
     <input type="submit" value="Delete" />
 }
+@using (Html.BeginForm("SponsorsClearReset", "Home", FormMethod.Post))
+{
+    <input type="submit" value="Reset Ids if list is empty" />
+}
 
 @using (Html.BeginForm("SponsorsSendUpdate", "Home", FormMethod.Post))
 {

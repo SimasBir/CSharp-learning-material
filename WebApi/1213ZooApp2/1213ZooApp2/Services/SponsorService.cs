@@ -70,5 +70,16 @@ namespace _1213ZooApp2.Services
                 sqlConnection.Close();
             }
         }
+
+        public void ClearTable(SqlConnection sqlConnection)
+        {
+            sqlConnection.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            string sqlCommand = $"DELETE FROM dbo.Sponsor WHERE ID=1 DBCC CHECKIDENT ('dbo.Sponsor', RESEED, 0)";
+            adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
+            adapter.InsertCommand.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
     }
 }

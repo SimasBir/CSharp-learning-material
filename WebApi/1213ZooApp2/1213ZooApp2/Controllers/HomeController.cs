@@ -49,7 +49,7 @@ namespace _1213ZooApp2.Controllers
             _zooService2.Update(model, _sqlConnection);
             return RedirectToAction("AnimalManagement");
         }
-        public ActionResult ZooClearReset(ZooModel2 model)
+        public ActionResult ZooClearReset()
         {
             _zooService2.ClearTable(_sqlConnection);
             return RedirectToAction("Index");
@@ -64,6 +64,29 @@ namespace _1213ZooApp2.Controllers
         public IActionResult Sponsors()
         {
             return View();
+        }
+
+        public ActionResult SponsorsSendSubmit(SponsorModel model)
+        {
+            _sponsorService.Add(model, _sqlConnection);
+            return RedirectToAction("Sponsors");
+        }
+
+        public ActionResult SponsorsSendDelete(string Id)
+        {
+            _sponsorService.Delete(Id, _sqlConnection);
+            return RedirectToAction("Sponsors");
+        }
+
+        public ActionResult SponsorsSendUpdate(SponsorModel model)
+        {
+            _sponsorService.Update(model, _sqlConnection);
+            return RedirectToAction("Sponsors");
+        }
+        public ActionResult SponsorsClearReset()
+        {
+            _sponsorService.ClearTable(_sqlConnection);
+            return RedirectToAction("Sponsors");
         }
 
 
