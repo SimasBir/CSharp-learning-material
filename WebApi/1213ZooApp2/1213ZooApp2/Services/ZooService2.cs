@@ -33,6 +33,7 @@ namespace _1213ZooApp2.Services
         {
             if (model.Name != null)
             {
+                
                 sqlConnection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 string sqlCommand = $"INSERT INTO dbo.Zoo2 (Name, Description, Gender, Age) VALUES ('{model.Name}','{model.Description}','{model.Gender}',{model.Age})";

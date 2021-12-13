@@ -40,6 +40,10 @@
 
     <input type="submit" value="Delete" />
 }
+@using (Html.BeginForm("ZooClearReset", "Home", FormMethod.Post))
+{
+    <input type="submit" value="Reset Ids if list is empty" />
+}
 
 @using (Html.BeginForm("ZooSendUpdate", "Home", FormMethod.Post))
 {

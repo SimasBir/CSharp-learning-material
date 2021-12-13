@@ -35,7 +35,7 @@ namespace _1213ZooApp2.Services
             {
                 sqlConnection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                string sqlCommand = $"INSERT INTO dbo.Sponsor (Id,FirstName, LastName, Amount, ZooId) VALUES ('{model.Id}','{model.FirstName}','{model.LastName}','{model.Amount}',{model.ZooId})";
+                string sqlCommand = $"INSERT INTO dbo.Sponsor (FirstName, LastName, Amount, ZooId) VALUES ('{model.FirstName}','{model.LastName}','{model.Amount}',{model.ZooId})";
                 adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
                 adapter.InsertCommand.ExecuteNonQuery();
 
