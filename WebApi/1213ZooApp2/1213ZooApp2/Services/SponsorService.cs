@@ -14,13 +14,13 @@ namespace _1213ZooApp2.Services
         {
             sqlConnection.Open();
             List<SponsorModel> sqlZoo = new List<SponsorModel>();
-            using (var command = new SqlCommand("SELECT * from dbo.Sponsor", sqlConnection))
+            using (var command = new SqlCommand("SELECT S.Id, S.FirstName, S.LastName, S.Amount, Z.Name from dbo.Sponsor AS S JOIN dbo.Zoo2 AS Z ON S.ZooId = Z.Id ", sqlConnection))
             {
                 using (SqlDataReader dr = command.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        sqlZoo.Add(new SponsorModel() { Id = dr.GetInt32(0), FirstName = dr.GetString(1), LastName = dr.GetString(2), Amount = dr.GetInt32(3), ZooId = dr.GetInt32(4) });
+                        sqlZoo.Add(new SponsorModel() { Id = dr.GetInt32(0), FirstName = dr.GetString(1), LastName = dr.GetString(2), Amount = dr.GetInt32(3), ZooName = dr.GetString(4) });
                     }
                 }
 
