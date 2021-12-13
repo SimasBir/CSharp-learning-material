@@ -2,7 +2,7 @@
 
 @using (Html.BeginForm("ZooSendSubmit", "Home", FormMethod.Post))
 {
-    <h3>Add</h3>
+    <h3>Add an animal</h3>
     <div>
         @Html.LabelFor(a => a.Name)
         @Html.Raw(" ")
@@ -30,7 +30,7 @@
 @using (Html.BeginForm("ZooSendDelete", "Home", FormMethod.Post))
 {
     <br />
-    <h3>Delete</h3>
+    <h3>Kill the animal</h3>
     <div>
         @Html.LabelFor(a => a.Id)
         @Html.Raw(" ")
@@ -48,7 +48,7 @@
 @using (Html.BeginForm("ZooSendUpdate", "Home", FormMethod.Post))
 {
     <br />
-    <h3>Update</h3>
+    <h3>Update animal information</h3>
     <div>
         @Html.LabelFor(a => a.Id)
         @Html.TextBoxFor(a => a.Id)

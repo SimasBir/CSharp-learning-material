@@ -34,20 +34,41 @@ namespace _1213ZooApp2.Controllers
         }
         public ActionResult ZooSendSubmit(ZooModel2 model)
         {
-            _zooService2.Add(model, _sqlConnection);
-            return RedirectToAction("AnimalManagement");
+            try
+            {
+                _zooService2.Add(model, _sqlConnection);
+                return RedirectToAction("AnimalManagement");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         public ActionResult ZooSendDelete(string Id)
         {
-            _zooService2.Delete(Id, _sqlConnection);
-            return RedirectToAction("AnimalManagement");
+            try
+            {
+                _zooService2.Delete(Id, _sqlConnection);
+                return RedirectToAction("AnimalManagement");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         public ActionResult ZooSendUpdate(ZooModel2 model)
         {
-            _zooService2.Update(model, _sqlConnection);
-            return RedirectToAction("AnimalManagement");
+            try
+            {
+                _zooService2.Update(model, _sqlConnection);
+                return RedirectToAction("AnimalManagement");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error");
+            }
         }
         public ActionResult ZooClearReset()
         {
@@ -68,20 +89,41 @@ namespace _1213ZooApp2.Controllers
 
         public ActionResult SponsorsSendSubmit(SponsorModel model)
         {
-            _sponsorService.Add(model, _sqlConnection);
-            return RedirectToAction("Sponsors");
+            try
+            {
+                _sponsorService.Add(model, _sqlConnection);
+                return RedirectToAction("Sponsors");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         public ActionResult SponsorsSendDelete(string Id)
         {
-            _sponsorService.Delete(Id, _sqlConnection);
-            return RedirectToAction("Sponsors");
+            try
+            {
+                _sponsorService.Delete(Id, _sqlConnection);
+                return RedirectToAction("Sponsors");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error");
+            }
         }
 
         public ActionResult SponsorsSendUpdate(SponsorModel model)
         {
-            _sponsorService.Update(model, _sqlConnection);
-            return RedirectToAction("Sponsors");
+            try
+            {
+                _sponsorService.Update(model, _sqlConnection);
+                return RedirectToAction("Sponsors");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error");
+            }
         }
         public ActionResult SponsorsClearReset()
         {

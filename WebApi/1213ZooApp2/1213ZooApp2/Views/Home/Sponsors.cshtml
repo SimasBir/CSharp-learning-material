@@ -2,7 +2,7 @@
 
 @using (Html.BeginForm("SponsorsSendSubmit", "Home", FormMethod.Post))
 {
-    <h3>Add</h3>
+    <h3>Become a sponsor</h3>
     <div>
         Name 
         @Html.Raw(" ")
@@ -30,7 +30,7 @@
 @using (Html.BeginForm("SponsorsSendDelete", "Home", FormMethod.Post))
 {
     <br />
-    <h3>Delete</h3>
+    <h3>Leave sponsorship</h3>
     <div>
         @Html.LabelFor(a => a.Id)
         @Html.Raw(" ")
@@ -48,7 +48,7 @@
 @using (Html.BeginForm("SponsorsSendUpdate", "Home", FormMethod.Post))
 {
     <br />
-    <h3>Update</h3>
+    <h3>Update sponsorship</h3>
     <div>
         @Html.LabelFor(a => a.Id)
         @Html.TextBoxFor(a => a.Id)

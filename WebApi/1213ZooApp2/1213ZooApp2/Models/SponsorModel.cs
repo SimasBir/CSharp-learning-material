@@ -10,9 +10,14 @@ namespace _1213ZooApp2.Models
     public class SponsorModel
     {
         public int Id { get; set; }
+        [Required] 
+        [StringLength(40, MinimumLength = 1)]
         public string FirstName { get; set; }
+        [StringLength(40)]
         public string LastName { get; set; }
+        [Range(1, 1000000)]
         public int Amount { get; set; }
+        [Required]
         public int ZooId { get; set; }
         public string ZooName { get; set; }
     }

@@ -17,6 +17,7 @@ namespace _1213ZooApp2.Models
         public string Description { get; set; }
         [StringLength(40)]
         public string Gender { get; set; }
+        [Range(1, 1000)]
         public int Age { get; set; }
     }
 }
