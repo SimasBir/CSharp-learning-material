@@ -14,7 +14,10 @@ namespace _1213ZooApp2.Services
         {
             sqlConnection.Open();
             List<SponsorModel> sqlZoo = new List<SponsorModel>();
-            using (var command = new SqlCommand("SELECT S.Id, S.FirstName, S.LastName, S.Amount, Z.Name from dbo.Sponsor AS S JOIN dbo.Zoo2 AS Z ON S.ZooId = Z.Id ", sqlConnection))
+            using (var command = new SqlCommand("SELECT S.Id, S.FirstName, S.LastName, S.Amount, Z.Name " +
+                "from dbo.Sponsor AS S " +
+                "JOIN dbo.Zoo2 AS Z " +
+                "ON S.ZooId = Z.Id ", sqlConnection))
             {
                 using (SqlDataReader dr = command.ExecuteReader())
                 {

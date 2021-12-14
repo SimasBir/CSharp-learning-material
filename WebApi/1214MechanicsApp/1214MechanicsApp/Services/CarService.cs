@@ -14,13 +14,13 @@ namespace _1214MechanicsApp.Services
         {
             sqlConnection.Open();
             List<CarModel> sqlZoo = new List<CarModel>();
-            using (var command = new SqlCommand("SELECT * from dbo.Cars", sqlConnection))
+            using (var command = new SqlCommand("SELECT C.Id, C.Number, C.Manifacturer, C.Year, M.Name, M.Surname FROM dbo.Cars AS C JOIN dbo.Mechanics AS M ON C.AssignedId = M.Id ", sqlConnection))
             {
                 using (SqlDataReader dr = command.ExecuteReader())
                 {
                     while (dr.Read())
                     {
-                        sqlZoo.Add(new CarModel() { Id = dr.GetInt32(0), Number = dr.GetString(1), Manifacturer = dr.GetString(2), Year = dr.GetInt32(3), AssignedId = dr.GetInt32(4)});
+                        sqlZoo.Add(new CarModel() { Id = dr.GetInt32(0), Number = dr.GetString(1), Manifacturer = dr.GetString(2), Year = dr.GetInt32(3), AssignedName = dr.GetString(4), AssignedSurname = dr.GetString(5) });
                     }
                 }
 
@@ -50,7 +50,7 @@ namespace _1214MechanicsApp.Services
             {
                 sqlConnection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                string sqlCommand = $"UPDATE dbo.Cars SET '{model.FirstName}', FirstName = LastName = '{model.LastName}', Amount = '{model.Amount}', ZooId = {model.ZooId} WHERE Id = '{model.Id}'";
+                string sqlCommand = $"UPDATE dbo.Cars SET Number ='{model.Number}', Manifacturer = '{model.Manifacturer}', Year = '{model.Year}', AssignedId = {model.AssignedId} WHERE Id = '{model.Id}'";
                 adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
                 adapter.InsertCommand.ExecuteNonQuery();
 

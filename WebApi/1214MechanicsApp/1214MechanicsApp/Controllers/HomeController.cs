@@ -38,7 +38,7 @@ namespace _1214MechanicsApp.Controllers
         }
 
 
-        public ActionResult MechanicSendSubmit(CarModel model)
+        public ActionResult CarSendSubmit(CarModel model)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace _1214MechanicsApp.Controllers
             }
         }
 
-        public ActionResult MechanicSendDelete(string Id)
+        public ActionResult CarSendDelete(string Id)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace _1214MechanicsApp.Controllers
             }
         }
 
-        public ActionResult MechanicSendUpdate(CarModel model)
+        public ActionResult CarSendUpdate(CarModel model)
         {
             try
             {
