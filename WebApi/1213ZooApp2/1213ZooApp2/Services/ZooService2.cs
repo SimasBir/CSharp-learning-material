@@ -50,7 +50,7 @@ namespace _1213ZooApp2.Services
             {
                 sqlConnection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                string sqlCommand = $"UPDATE dbo.Zoo2 SET '{model.Name}', Name = Description = '{model.Description}', Gender = '{model.Gender}', Age = {model.Age} WHERE Id = '{model.Id}'";
+                string sqlCommand = $"UPDATE dbo.Zoo2 SET Name = '{model.Name}', Description = '{model.Description}', Gender = '{model.Gender}', Age = {model.Age} WHERE Id = '{model.Id}'";
                 adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
                 adapter.InsertCommand.ExecuteNonQuery();
 

@@ -15,7 +15,7 @@ namespace _1213ZooApp2.Models
         public string FirstName { get; set; }
         [StringLength(40)]
         public string LastName { get; set; }
-        [Range(1, 1000000)]
+        [RegularExpression(@"^[0-9]*$")]
         public int Amount { get; set; }
         [Required]
         public int ZooId { get; set; }
