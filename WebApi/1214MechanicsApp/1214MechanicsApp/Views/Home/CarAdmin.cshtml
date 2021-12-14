@@ -1,0 +1,68 @@
+﻿@model CarModel
+
+@using (Html.BeginForm("CarsSendSubmit", "Home", FormMethod.Post))
+{
+    <h3>Fix my car</h3>
+    <div>
+         @Html.LabelFor(a => a.Number)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Number)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Manifacturer)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Manifacturer)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Year)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Year)
+    </div>
+        <div>
+        @Html.LabelFor(a => a.AssignedId)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.AssignedId)
+    </div>
+
+    <input type="submit" value="Submit" />
+
+}
+@using (Html.BeginForm("CarsSendDelete", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Remove car</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+
+    <input type="submit" value="Delete" />
+}
+
+@using (Html.BeginForm("CarsSendUpdate", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Update info</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+        <div>
+        New @Html.LabelFor(a => a.Number)
+        @Html.TextBoxFor(a => a.Number)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Manifacturer)
+        @Html.TextBoxFor(a => a.Manifacturer)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Year)
+        @Html.TextBoxFor(a => a.Year)
+    </div>
+
+    <input type="submit" value="Update" />
+
+}

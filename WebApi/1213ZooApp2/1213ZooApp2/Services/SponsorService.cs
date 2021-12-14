@@ -49,7 +49,7 @@ namespace _1213ZooApp2.Services
             {
                 sqlConnection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter();
-                string sqlCommand = $"UPDATE dbo.Sponsor SET '{model.FirstName}', FirstName = LastName = '{model.LastName}', Amount = '{model.Amount}', ZooId = {model.ZooId} WHERE Id = '{model.Id}'";
+                string sqlCommand = $"UPDATE dbo.Sponsor SET FirstName = '{model.FirstName}',LastName = '{model.LastName}', Amount = '{model.Amount}', ZooId = {model.ZooId} WHERE Id = '{model.Id}'";
                 adapter.InsertCommand = new SqlCommand(sqlCommand, sqlConnection);
                 adapter.InsertCommand.ExecuteNonQuery();
 

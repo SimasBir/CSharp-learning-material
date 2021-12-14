@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cars currently being worked on</h1>
+
+</div>
+<br />
+@model List<CarModel>
+@foreach (var taskModel in @Model)
+{
+    <ul class="list-group list-group-horizontal">
+
+        <li class="list-group-item .flex-fill">@taskModel.Id</li>
+        <li class="list-group-item">[@taskModel.Number] - @taskModel.Manifacturer, @taskModel.Year</li>
+        <li class="list-group-item .flex-fill"> Being worked on by @taskModel.AssignedId</li>
+    </ul>
+}

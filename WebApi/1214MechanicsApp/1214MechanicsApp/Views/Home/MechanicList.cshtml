@@ -1,0 +1,7 @@
+﻿@model List<MechanicModel>
+@foreach(var taskModel in @Model){
+<ul class="list-group list-group-horizontal">  
+    <li class="list-group-item .flex-fill">@taskModel.Id</li>
+    <li class="list-group-item">@taskModel.Name @taskModel.Surname - @taskModel.Experience years of experience</li>
+ </ul>
+}

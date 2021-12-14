@@ -1,0 +1,63 @@
+﻿@model MechanicModel
+
+@using (Html.BeginForm("MechanicSendSubmit", "Home", FormMethod.Post))
+{
+    <h3>Enter data to get hired</h3>
+    <div>
+        @Html.LabelFor(a => a.Name)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Name)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Surname)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Surname)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Experience)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Experience)
+    </div>
+
+    <input type="submit" value="I'M HIRED" />
+
+}
+@using (Html.BeginForm("MechanicSendDelete", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Termination</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.Raw(" ")
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+
+    <input type="submit" value="Changed my mind" />
+}
+
+@using (Html.BeginForm("MechanicSendUpdate", "Home", FormMethod.Post))
+{
+    <br />
+    <h3>Update my info</h3>
+    <div>
+        @Html.LabelFor(a => a.Id)
+        @Html.TextBoxFor(a => a.Id)
+    </div>
+    <br />
+    <div>
+        New @Html.LabelFor(a => a.Name)
+        @Html.TextBoxFor(a => a.Name)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Surname)
+        @Html.TextBoxFor(a => a.Surname)
+    </div>
+    <div>
+        New @Html.LabelFor(a => a.Experience)
+        @Html.TextBoxFor(a => a.Experience)
+    </div>
+
+    <input type="submit" value="Update" />
+
+}
