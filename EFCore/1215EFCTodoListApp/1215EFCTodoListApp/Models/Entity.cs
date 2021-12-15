@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace _1215EFCTodoListApp.Models
 {
-    public class Todo : NamedEntity
+    public abstract class Entity
     {
-        public string Description { get; set; }
-
-        public Category Category { get; set; }
+        public int Id { get; set; }
     }
 }
