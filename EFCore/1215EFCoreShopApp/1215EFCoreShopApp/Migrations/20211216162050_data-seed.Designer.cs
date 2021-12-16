@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _1215EFCoreShopApp.Data;
 
 namespace _1215EFCoreShopApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211216162050_data-seed")]
+    partial class dataseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,62 +66,44 @@ namespace _1215EFCoreShopApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ShopId");
-
                     b.ToTable("ShopItems");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            ExpiryDate = new DateTime(2021, 12, 16, 16, 24, 34, 606, DateTimeKind.Utc).AddTicks(755),
+                            ExpiryDate = new DateTime(2021, 12, 16, 16, 20, 49, 930, DateTimeKind.Utc).AddTicks(4886),
                             Name = "Phone",
                             ShopId = 1
                         },
                         new
                         {
                             Id = 2,
-                            ExpiryDate = new DateTime(2021, 12, 16, 16, 24, 34, 606, DateTimeKind.Utc).AddTicks(1157),
+                            ExpiryDate = new DateTime(2021, 12, 16, 16, 20, 49, 930, DateTimeKind.Utc).AddTicks(5276),
                             Name = "Bread",
                             ShopId = 2
                         },
                         new
                         {
                             Id = 3,
-                            ExpiryDate = new DateTime(2021, 12, 16, 16, 24, 34, 606, DateTimeKind.Utc).AddTicks(1161),
+                            ExpiryDate = new DateTime(2021, 12, 16, 16, 20, 49, 930, DateTimeKind.Utc).AddTicks(5280),
                             Name = "TV",
                             ShopId = 1
                         },
                         new
                         {
                             Id = 4,
-                            ExpiryDate = new DateTime(2021, 12, 16, 16, 24, 34, 606, DateTimeKind.Utc).AddTicks(1162),
+                            ExpiryDate = new DateTime(2021, 12, 16, 16, 20, 49, 930, DateTimeKind.Utc).AddTicks(5281),
                             Name = "Milk",
                             ShopId = 2
                         },
                         new
                         {
                             Id = 5,
-                            ExpiryDate = new DateTime(2021, 12, 16, 16, 24, 34, 606, DateTimeKind.Utc).AddTicks(1163),
+                            ExpiryDate = new DateTime(2021, 12, 16, 16, 20, 49, 930, DateTimeKind.Utc).AddTicks(5283),
                             Name = "Beef",
                             ShopId = 2
                         });
-                });
-
-            modelBuilder.Entity("_1215EFCoreShopApp.Models.ShopItem", b =>
-                {
-                    b.HasOne("_1215EFCoreShopApp.Models.Shop", "Shops")
-                        .WithMany("ShopItems")
-                        .HasForeignKey("ShopId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Shops");
-                });
-
-            modelBuilder.Entity("_1215EFCoreShopApp.Models.Shop", b =>
-                {
-                    b.Navigation("ShopItems");
                 });
 #pragma warning restore 612, 618
         }

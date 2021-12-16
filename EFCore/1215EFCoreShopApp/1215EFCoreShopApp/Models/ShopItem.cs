@@ -10,5 +10,6 @@ namespace _1215EFCoreShopApp.Models
     {
         public int ShopId { get; set; }
         public DateTime ExpiryDate { get; set; } = DateTime.UtcNow;
+        public Shop Shops { get; set; }
     }
 }

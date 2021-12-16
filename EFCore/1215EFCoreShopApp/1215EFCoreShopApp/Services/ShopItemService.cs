@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1215EFCoreShopApp.Models
+namespace _1215EFCoreShopApp.Services
 {
-    public class Shop : NamedEntity
+    public class ShopItemService
     {
-        public List<ShopItem> ShopItems { get; set; }
+        public void Add()
+        {
+
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1215EFCoreShopApp.Models
 {
-    public class NamedEntity
+    public abstract class NamedEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

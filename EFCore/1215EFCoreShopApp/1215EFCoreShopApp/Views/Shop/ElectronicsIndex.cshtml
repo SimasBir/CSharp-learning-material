@@ -1,23 +1,21 @@
 ﻿@model List<ShopItem>
 
-<h3>Catalogue</h3>
+<h3>Electronics catalogue</h3>
 
 <table class="table">
     <thead class="thead-light">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Location</th>
             <th scope="col">ExpiryDate</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in @Model)
         {
             <tr>
                 <th scope="row">@item.Id</th>
                 <td>@item.Name</td>
-                <td>@Html.DisplayFor(ModelItem => item.Shops.Name)</td> //No idea why, but works
                 <td>@item.ExpiryDate</td>
             </tr>
         }

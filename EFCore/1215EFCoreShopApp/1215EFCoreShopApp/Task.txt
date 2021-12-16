@@ -8,6 +8,7 @@ as well Shop Name it belongs to.
 
 3. Data seed migration should have at least 2 shops and 5 items.
 
+add-migration "name", update-database
 
 Advanced and Optional:
 
