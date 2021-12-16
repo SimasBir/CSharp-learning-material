@@ -21,7 +21,7 @@ namespace _1215EFCoreShopApp.Controllers
 
         public IActionResult Index()
         {
-            List<ShopItem> items = _context.ShopItems.Where(i => i.Id != null).ToList();
+            List<ShopItem> items = _context.ShopItems.Include(i => i.Shops).ToList();
             return View(items);
         }
         public IActionResult ElectronicsIndex()
