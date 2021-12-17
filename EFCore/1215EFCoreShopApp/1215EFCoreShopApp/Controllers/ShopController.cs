@@ -1,5 +1,6 @@
 ﻿using _1215EFCoreShopApp.Data;
 using _1215EFCoreShopApp.Models;
+using _1215EFCoreShopApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,26 +14,27 @@ namespace _1215EFCoreShopApp.Controllers
     public class ShopController : Controller
     {
         private DataContext _context;
+        private readonly ShopItemService _shopItemService;
 
-        public ShopController(DataContext context)
+        public ShopController(DataContext context, ShopItemService shopItemService)
         {
             _context = context;
+            _shopItemService = shopItemService;
         }
 
         public IActionResult Index()
         {
-            List<ShopItem> items = _context.ShopItems.Include(i => i.Shops).ToList();
+            List<ShopItem> items = _shopItemService.ListAll(_context);
             return View(items);
         }
         public IActionResult ElectronicsIndex()
         {
-            
-            List<ShopItem> items = _context.Shops.Include(i => i.ShopItems).Where(s => s.Id == 1).SelectMany(i => i.ShopItems).ToList();
+            List<ShopItem> items = _shopItemService.List(1, _context);
             return View(items);
         }
         public IActionResult GroceriesIndex()
         {
-            List<ShopItem> items = _context.Shops.Include(i => i.ShopItems).Where(s => s.Id == 2).SelectMany(i => i.ShopItems).ToList();
+            List<ShopItem> items = _shopItemService.List(2, _context);
             return View(items);
         }
     }

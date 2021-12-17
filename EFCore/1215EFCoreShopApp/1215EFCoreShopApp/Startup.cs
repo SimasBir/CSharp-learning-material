@@ -1,4 +1,5 @@
 using _1215EFCoreShopApp.Data;
+using _1215EFCoreShopApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,8 @@ namespace _1215EFCoreShopApp
             var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnection));
             services.AddControllersWithViews();
+            services.AddTransient<ShopItemService>();
+            services.AddTransient<CRUDService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
