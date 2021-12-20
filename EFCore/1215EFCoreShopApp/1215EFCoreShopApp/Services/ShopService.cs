@@ -14,7 +14,7 @@ namespace _1215EFCoreShopApp.Services
     {
         public List<Shop> ListAllShops(DataContext dataContext)
         {
-            List<Shop> shops = dataContext.Shops.ToList();
+            List<Shop> shops = dataContext.Shops.IgnoreQueryFilters().ToList();
             return shops;
         }
         public void ShopAdd(Shop shop, DataContext dataContext)
@@ -31,6 +31,13 @@ namespace _1215EFCoreShopApp.Services
         {
             Shop shop = dataContext.Shops.Find(Id);
             dataContext.Shops.Remove(shop);
+            dataContext.SaveChanges();
+        }
+        public void ShopReactivate(int Id, DataContext dataContext)
+        {
+            Shop shop = dataContext.Shops.IgnoreQueryFilters().Single(x => x.Id == Id);
+            shop.IsDeleted = false;
+            //dataContext.Shops.Update(shop);
             dataContext.SaveChanges();
         }
     }

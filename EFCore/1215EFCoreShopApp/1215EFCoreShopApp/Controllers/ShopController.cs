@@ -59,9 +59,9 @@ namespace _1215EFCoreShopApp.Controllers
             try
             {
                 _shopService.ShopDelete(Id, _context);
-                return RedirectToAction("Index");
+                return RedirectToAction("ShopIndex");
             }
-            catch (Exception ex)
+            catch
             {
                 return RedirectToAction("ShopError");
             }
@@ -69,6 +69,12 @@ namespace _1215EFCoreShopApp.Controllers
         public IActionResult ShopError()
         {
             return View();
+        }
+        
+        public IActionResult ShopReactivate(int Id)
+        {
+            _shopService.ShopReactivate(Id, _context);
+            return RedirectToAction("ShopIndex");
         }
     }
 }

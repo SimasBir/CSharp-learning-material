@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace _1215EFCoreShopApp.Data
@@ -61,13 +62,36 @@ namespace _1215EFCoreShopApp.Data
                 }
                 );
 
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Shop>().Property<bool>("isDeleted");
-            modelBuilder.Entity<Shop>().HasQueryFilter(m => EF.Property<bool>(m, "isDeleted") == false);
-            modelBuilder.Entity<ShopItem>().Property<bool>("isDeleted");
-            modelBuilder.Entity<ShopItem>().HasQueryFilter(m => EF.Property<bool>(m, "isDeleted") == false);
+            modelBuilder.Entity<Shop>().Property<bool>("IsDeleted");
+            modelBuilder.Entity<Shop>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
+            modelBuilder.Entity<ShopItem>().Property<bool>("IsDeleted");
+            modelBuilder.Entity<ShopItem>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
 
-    }
+        }
+        public override int SaveChanges()
+        {
+            UpdateSoftDeleteStatuses();
+            return base.SaveChanges();
+        }
+
+        private void UpdateSoftDeleteStatuses()
+        {
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.CurrentValues["IsDeleted"] = false;
+                        break;
+                    case EntityState.Deleted:
+                        entry.State = EntityState.Modified;
+                        entry.CurrentValues["IsDeleted"] = true;
+                        break;
+                }
+            }
+        }
 
     }
 

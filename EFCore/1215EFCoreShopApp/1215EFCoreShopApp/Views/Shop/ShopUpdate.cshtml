@@ -6,10 +6,11 @@
     @Html.TextBoxFor(a => a.Name)
     @Html.ValidationMessageFor(a => a.Name)
     <br />
+    @Html.LabelFor(a => a.IsDeleted)
+    @Html.TextBoxFor(a => a.IsDeleted)
+    @Html.ValidationMessageFor(a => a.IsDeleted)
+    <br />
 
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Write about your shop:</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-    </div>
+
     <input type="submit" value="Submit" />
 }
