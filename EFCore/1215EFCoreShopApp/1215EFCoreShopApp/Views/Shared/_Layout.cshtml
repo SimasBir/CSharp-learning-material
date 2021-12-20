@@ -19,22 +19,32 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Index">ShopItems</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ShopItem" asp-action="Index">Shop Items list</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="ElectronicsIndex">Electronics shop</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Shop Index
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="ShopIndex">Shop list</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ShopItem" asp-action="ElectronicsIndex">Electronics shop</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ShopItem" asp-action="GroceriesIndex">Grocery shop</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="GroceriesIndex">Grocery shop</a>
-                        </li>
+
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CRUD" asp-action="ShopItemAdmin">ShopItemsAdmin</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                ADMIN
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="ShopItem" asp-action="ShopItemAdd">Shop Items Admin</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="ShopAdd">Shops Admin</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CRUD" asp-action="ShopAdmin">ShopAdmin</a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

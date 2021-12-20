@@ -1,0 +1,15 @@
+﻿@model Shop
+
+@using (Html.BeginForm("ShopUpdate", "Shop", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    @Html.ValidationMessageFor(a => a.Name)
+    <br />
+
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Write about your shop:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+    </div>
+    <input type="submit" value="Submit" />
+}

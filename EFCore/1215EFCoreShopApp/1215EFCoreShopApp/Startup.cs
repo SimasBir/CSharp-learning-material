@@ -29,8 +29,8 @@ namespace _1215EFCoreShopApp
             var defaultConnection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnection));
             services.AddControllersWithViews();
+            services.AddTransient<ShopService>();
             services.AddTransient<ShopItemService>();
-            services.AddTransient<CRUDService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +57,7 @@ namespace _1215EFCoreShopApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Shop}/{action=Index}/{id?}");
+                    pattern: "{controller=ShopItem}/{action=Index}/{id?}");
             });
         }
     }

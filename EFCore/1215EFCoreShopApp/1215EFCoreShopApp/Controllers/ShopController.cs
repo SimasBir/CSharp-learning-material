@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,28 +15,60 @@ namespace _1215EFCoreShopApp.Controllers
     public class ShopController : Controller
     {
         private DataContext _context;
-        private readonly ShopItemService _shopItemService;
+        private readonly ShopService _shopService;
 
-        public ShopController(DataContext context, ShopItemService shopItemService)
+        public ShopController(DataContext context, ShopService shopService)
         {
             _context = context;
-            _shopItemService = shopItemService;
+            _shopService = shopService;
         }
 
-        public IActionResult Index()
+        public IActionResult ShopIndex()
         {
-            List<ShopItem> items = _shopItemService.ListAll(_context);
-            return View(items);
+            List<Shop> shops = _shopService.ListAllShops(_context);
+            return View(shops);
         }
-        public IActionResult ElectronicsIndex()
+        public IActionResult ShopAdd()
         {
-            List<ShopItem> items = _shopItemService.List(1, _context);
-            return View(items);
+            Shop shop = new Shop();
+            return View(shop);
         }
-        public IActionResult GroceriesIndex()
+        [HttpPost]
+        public IActionResult ShopAdd(Shop shop)
         {
-            List<ShopItem> items = _shopItemService.List(2, _context);
-            return View(items);
+            if (!ModelState.IsValid)
+            {
+                return View(shop);
+            }
+            _shopService.ShopAdd(shop, _context);
+            return RedirectToAction("ShopIndex");
+        }
+        public IActionResult ShopUpdate(int Id)
+        {
+            Shop shop = _context.Shops.Find(Id);
+            return View(shop);
+        }
+        [HttpPost]
+        public IActionResult ShopUpdate(Shop shop)
+        {
+            _shopService.ShopUpdate(shop, _context);
+            return RedirectToAction("ShopIndex");
+        }
+        public IActionResult ShopDelete(int Id)
+        {
+            try
+            {
+                _shopService.ShopDelete(Id, _context);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("ShopError");
+            }
+        }
+        public IActionResult ShopError()
+        {
+            return View();
         }
     }
 }

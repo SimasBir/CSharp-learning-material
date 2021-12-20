@@ -60,6 +60,15 @@ namespace _1215EFCoreShopApp.Data
                     ShopId = 2
                 }
                 );
-        }
+
+
+            modelBuilder.Entity<Shop>().Property<bool>("isDeleted");
+            modelBuilder.Entity<Shop>().HasQueryFilter(m => EF.Property<bool>(m, "isDeleted") == false);
+            modelBuilder.Entity<ShopItem>().Property<bool>("isDeleted");
+            modelBuilder.Entity<ShopItem>().HasQueryFilter(m => EF.Property<bool>(m, "isDeleted") == false);
+
     }
+
+    }
+
 }

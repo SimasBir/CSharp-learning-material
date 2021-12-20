@@ -1,0 +1,26 @@
+﻿@model List<Shop>
+
+<h3>Our shops</h3>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col" style="width: 10%">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col" style="width: 20%">Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Name</td>
+                <td>
+                    @Html.ActionLink("Update", "ShopUpdate", "Shop", new { id = @item.Id }, new { @class= "btn btn-secondary" })
+                    @Html.ActionLink("Delete", "ShopDelete", "Shop", new { id = @item.Id }, new { @class= "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
