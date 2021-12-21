@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _1215EFCTodoListApp.Data;
 
 namespace _1215EFCTodoListApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211221173337_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,22 +42,6 @@ namespace _1215EFCTodoListApp.Migrations
                             Id = 1,
                             Name = "Default"
                         });
-                });
-
-            modelBuilder.Entity("_1215EFCTodoListApp.Models.Tag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("_1215EFCTodoListApp.Models.Todo", b =>
@@ -99,21 +85,6 @@ namespace _1215EFCTodoListApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("_1215EFCTodoListApp.Models.TodoTag", b =>
-                {
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TodoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TagId", "TodoId");
-
-                    b.HasIndex("TodoId");
-
-                    b.ToTable("TodoTags");
-                });
-
             modelBuilder.Entity("_1215EFCTodoListApp.Models.Todo", b =>
                 {
                     b.HasOne("_1215EFCTodoListApp.Models.Category", "Category")
@@ -123,38 +94,9 @@ namespace _1215EFCTodoListApp.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("_1215EFCTodoListApp.Models.TodoTag", b =>
-                {
-                    b.HasOne("_1215EFCTodoListApp.Models.Tag", "Tag")
-                        .WithMany("TodoTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_1215EFCTodoListApp.Models.Todo", "Todo")
-                        .WithMany("TodoTags")
-                        .HasForeignKey("TodoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tag");
-
-                    b.Navigation("Todo");
-                });
-
             modelBuilder.Entity("_1215EFCTodoListApp.Models.Category", b =>
                 {
                     b.Navigation("Todos");
-                });
-
-            modelBuilder.Entity("_1215EFCTodoListApp.Models.Tag", b =>
-                {
-                    b.Navigation("TodoTags");
-                });
-
-            modelBuilder.Entity("_1215EFCTodoListApp.Models.Todo", b =>
-                {
-                    b.Navigation("TodoTags");
                 });
 #pragma warning restore 612, 618
         }

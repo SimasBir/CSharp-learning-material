@@ -1,4 +1,5 @@
 ﻿using _1215EFCTodoListApp.Data;
+using _1215EFCTodoListApp.Dtos;
 using _1215EFCTodoListApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,23 +28,43 @@ namespace _1215EFCTodoListApp.Controllers
             //    .ToList();
             //List<Todo> todos4 = _context.Todos.Where(t => t.Description != null).ToList();
             //List<Todo> todos2 = _context.Todos.Take(2).ToList();
-            List<Todo> todos = _context.Todos.ToList();
+            //List<Todo> todos = _context.Todos.ToList();
 
+            List<Todo> todos = _context.Todos.Include(t => t.TodoTags).ThenInclude(t=> t.Tag).ToList(); //many to many
             return View(todos);
         }
         public IActionResult Add()
         {
-            var todo = new Todo();
-            return View(todo);
+            var createTodo = new CreateTodo()
+            {
+                Todo = new Todo(),
+                AllCategories = _context.Categories.ToList(),
+                Tags = _context.Tags.ToList(),
+            };
+            return View(createTodo);
         }
         [HttpPost]
-        public IActionResult Add(Todo todo)
+        public IActionResult Add(CreateTodo createTodo)
         {
             if (!ModelState.IsValid)
             {
-                return View(todo);
+                createTodo.AllCategories = _context.Categories.ToList();
+                return View(createTodo);
             }
-            _context.Todos.Add(todo);
+            _context.Todos.Add(createTodo.Todo);
+
+            _context.SaveChanges();
+
+            // Inserting Tags
+
+            foreach (var tagId in createTodo.SelectedTagIds)
+            {
+                _context.TodoTags.Add(new TodoTag()
+                {
+                    TagId = tagId,
+                    TodoId = createTodo.Todo.Id
+                });
+            }
             _context.SaveChanges();
 
             return RedirectToAction("Index");

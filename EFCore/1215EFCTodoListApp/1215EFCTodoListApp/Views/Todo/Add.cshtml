@@ -1,14 +1,22 @@
-﻿@model Todo
+﻿@model _1215EFCTodoListApp.Dtos.CreateTodo
 
 @using (Html.BeginForm("Add", "Todo", FormMethod.Post))
 {
-    @Html.LabelFor(a => a.Name)
-    @Html.TextBoxFor(a => a.Name)
-    @Html.ValidationMessageFor(a => a.Name)
+    @Html.LabelFor(a => a.Todo.Name)
+    @Html.TextBoxFor(a => a.Todo.Name)
+    @Html.ValidationMessageFor(a => a.Todo.Name)
     <br />
-    @Html.LabelFor(a => a.Description)
-    @Html.TextBoxFor(a => a.Description)
-    @Html.ValidationMessageFor(a => a.Description)
+    @Html.LabelFor(a => a.Todo.Description)
+    @Html.TextBoxFor(a => a.Todo.Description)
+    @Html.ValidationMessageFor(a => a.Todo.Description)
+    <br />
+        @Html.LabelFor(a => a.Todo.Category) //One to many
+    @Html.DropDownListFor(a => a.Todo.CategoryId,new SelectList(@Model.AllCategories,"Id","Name"))
+    @Html.ValidationMessageFor(a => a.Todo.CategoryId)
+    <br />
+    @Html.LabelFor(a => a.Todo.TodoTags) // Many to many
+    @Html.ListBoxFor(a => a.SelectedTagIds,new SelectList(@Model.Tags,"Id","Name"))
+    @Html.ValidationMessageFor(a => a.Todo.CategoryId)
     <br />
 
     <input type="submit" value="Submit" />

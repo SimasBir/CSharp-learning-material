@@ -12,12 +12,19 @@ namespace _1215EFCTodoListApp.Data
     {
         public DbSet<Todo> Todos { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<TodoTag> TodoTags { get; set; }
+
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<TodoTag>()
+        .HasKey(bc => new { bc.TagId, bc.TodoId });
+
             modelBuilder.Entity<Category>().HasData(new Category()
             {
                 Id = 1,
