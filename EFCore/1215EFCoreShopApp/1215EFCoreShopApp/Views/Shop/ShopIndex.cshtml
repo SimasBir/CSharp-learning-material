@@ -7,7 +7,7 @@
         <tr>
             <th scope="col" style="width: 10%">Id</th>
             <th scope="col">Name</th>
-            <th scope="col"style="width: 20%">Deactivated</th>
+            <th scope="col"style="width: 20%"></th>
             <th scope="col" style="width: 20%">Controls</th>
         </tr>
     </thead>
@@ -19,11 +19,11 @@
                 <td>@item.Name</td>
                 @if (@item.IsDeleted==true)
                     {
-                        <td>@Html.ActionLink("Reactivate", "ShopReactivate", "Shop", new { id = @item.Id }, new { @class= "btn btn-success" })</td>
+                        <td class="table-warning">@Html.ActionLink("Reactivate", "ShopReactivate", "Shop", new { id = @item.Id }, new { @class= "btn btn-success" })</td>
                     }
                     else
                     {
-                        <td>False</td>
+                        <td></td>
                         
                     }
                 

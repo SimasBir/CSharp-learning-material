@@ -1,18 +1,20 @@
-﻿@model ShopItem
+﻿@model _1215EFCoreShopApp.Dtos.CreateShopItem
 
 @using (Html.BeginForm("ShopItemUpdate", "ShopItem", FormMethod.Post))
 {
-    @Html.LabelFor(a => a.Name)
-    @Html.TextBoxFor(a => a.Name)
-    @Html.ValidationMessageFor(a => a.Name)
+    @Html.HiddenFor(a => a.ShopItem.Id)
+
+    @Html.LabelFor(a => a.ShopItem.Name)
+    @Html.TextBoxFor(a => a.ShopItem.Name)
+    @Html.ValidationMessageFor(a => a.ShopItem.Name)
     <br />
-    @Html.LabelFor(a => a.ExpiryDate)
-    @Html.TextBoxFor(a => a.ExpiryDate)
-    @Html.ValidationMessageFor(a => a.ExpiryDate)
+    @Html.LabelFor(a => a.ShopItem.ExpiryDate)
+    @Html.TextBoxFor(a => a.ShopItem.ExpiryDate)
+    @Html.ValidationMessageFor(a => a.ShopItem.ExpiryDate)
     <br />
-    @Html.LabelFor(a => a.ShopId)
-    @Html.TextBoxFor(a => a.ShopId)
-    @Html.ValidationMessageFor(a => a.ShopId)
+    @Html.LabelFor(a => a.ShopItem.Shops)
+    @Html.DropDownListFor(a => a.ShopItem.ShopId,new SelectList(@Model.ShopList,"Id","Name"))
+    @Html.ValidationMessageFor(a => a.ShopItem.ShopId)
     <br />
 
     <input type="submit" value="Submit" />

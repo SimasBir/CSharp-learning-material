@@ -1,5 +1,6 @@
 ﻿using _1215EFCoreShopApp.Controllers;
 using _1215EFCoreShopApp.Data;
+using _1215EFCoreShopApp.Dtos;
 using _1215EFCoreShopApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,14 +23,16 @@ namespace _1215EFCoreShopApp.Services
             List<ShopItem> items = dataContext.Shops.Include(i => i.ShopItems).Where(s => s.Id == shopId).SelectMany(i => i.ShopItems).ToList();
             return items;
         }
-        public void ShopItemAdd(ShopItem shopitem, DataContext dataContext)
+        public void ShopItemAdd(CreateShopItem createShopItem, DataContext dataContext)
         {
-            dataContext.ShopItems.Add(shopitem);
+            createShopItem.ShopList = dataContext.Shops.ToList();
+            dataContext.ShopItems.Add(createShopItem.ShopItem);
             dataContext.SaveChanges();
         }
-        public void ShopItemUpdate(ShopItem shopitem, DataContext dataContext)
+        public void ShopItemUpdate(CreateShopItem createShopItem, DataContext dataContext)
         {
-            dataContext.ShopItems.Update(shopitem);
+            //createShopItem.ShopList = dataContext.Shops.ToList();
+            dataContext.ShopItems.Update(createShopItem.ShopItem);
             dataContext.SaveChanges();
         }
         public void ShopItemDelete(int Id, DataContext dataContext)

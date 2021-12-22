@@ -22,15 +22,16 @@ namespace _1215EFCoreShopApp.Controllers
             _context = context;
             _shopService = shopService;
         }
-
         public IActionResult ShopIndex()
         {
             List<Shop> shops = _shopService.ListAllShops(_context);
             return View(shops);
         }
+
         public IActionResult ShopAdd()
         {
             Shop shop = new Shop();
+
             return View(shop);
         }
         [HttpPost]

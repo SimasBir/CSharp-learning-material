@@ -1,4 +1,5 @@
 ﻿using _1215EFCoreShopApp.Data;
+using _1215EFCoreShopApp.Dtos;
 using _1215EFCoreShopApp.Models;
 using _1215EFCoreShopApp.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -39,21 +40,28 @@ namespace _1215EFCoreShopApp.Controllers
             List<ShopItem> items = _shopItemService.List(shopId, _context);
             return View(items);
         }
+
         public IActionResult ShopItemAdd()
         {
-            ShopItem shopItem = new ShopItem();
-            return View(shopItem);
+            //ShopItem shopItem = new ShopItem();
+            CreateShopItem createShopItem = new CreateShopItem()
+            {
+                ShopItem = new ShopItem(),
+                ShopList = _context.Shops.ToList(),
+            };
+            return View(createShopItem);
         }
         [HttpPost]
-        public IActionResult ShopItemAdd(ShopItem shopItem)
+        public IActionResult ShopItemAdd(CreateShopItem createShopItem)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(shopItem);
+                    return View(createShopItem);
                 }
-                _shopItemService.ShopItemAdd(shopItem, _context);
+
+                _shopItemService.ShopItemAdd(createShopItem, _context);
                 return RedirectToAction("Index");
             }
             catch
@@ -65,8 +73,12 @@ namespace _1215EFCoreShopApp.Controllers
         {
             try
             {
-                ShopItem shopItem = _context.ShopItems.Find(Id);
-                return View(shopItem);
+                CreateShopItem createShopItem = new CreateShopItem()
+                {
+                    ShopItem = _context.ShopItems.Find(Id),
+                    ShopList = _context.Shops.ToList(),
+                };
+                return View(createShopItem);
             }
             catch
             {
@@ -74,9 +86,9 @@ namespace _1215EFCoreShopApp.Controllers
             }
         }
         [HttpPost]
-        public IActionResult ShopItemUpdate(ShopItem shopitem)
+        public IActionResult ShopItemUpdate(CreateShopItem createShopItem)
         {
-            _shopItemService.ShopItemUpdate(shopitem, _context);
+            _shopItemService.ShopItemUpdate(createShopItem, _context);
             return RedirectToAction("Index");
         }
         public IActionResult ShopItemDelete(int Id)
