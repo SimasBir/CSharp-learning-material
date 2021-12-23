@@ -11,5 +11,7 @@ namespace _1215EFCoreShopApp.Dtos
     {
         public ShopItem ShopItem { get; set; }
         public List<Shop> ShopList { get; set; }
+        public List<int> SelectedTagIds { get; set; } // Will contain info on selected tags
+        public List<Tag> Tags { get; set; } //Tags to display
     }
 }

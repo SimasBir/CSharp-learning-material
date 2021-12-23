@@ -22,6 +22,7 @@ namespace _1215EFCoreShopApp.Controllers
             _context = context;
             _shopService = shopService;
         }
+
         public IActionResult ShopIndex()
         {
             List<Shop> shops = _shopService.ListAllShops(_context);
@@ -34,6 +35,7 @@ namespace _1215EFCoreShopApp.Controllers
 
             return View(shop);
         }
+
         [HttpPost]
         public IActionResult ShopAdd(Shop shop)
         {
@@ -44,34 +46,31 @@ namespace _1215EFCoreShopApp.Controllers
             _shopService.ShopAdd(shop, _context);
             return RedirectToAction("ShopIndex");
         }
+
         public IActionResult ShopUpdate(int Id)
         {
             Shop shop = _context.Shops.Find(Id);
             return View(shop);
         }
+
         [HttpPost]
         public IActionResult ShopUpdate(Shop shop)
         {
             _shopService.ShopUpdate(shop, _context);
             return RedirectToAction("ShopIndex");
         }
+
         public IActionResult ShopDelete(int Id)
         {
-            try
-            {
-                _shopService.ShopDelete(Id, _context);
-                return RedirectToAction("ShopIndex");
-            }
-            catch
-            {
-                return RedirectToAction("ShopError");
-            }
+            _shopService.ShopDelete(Id, _context);
+            return RedirectToAction("ShopIndex");
         }
+
         public IActionResult ShopError()
         {
             return View();
         }
-        
+
         public IActionResult ShopReactivate(int Id)
         {
             _shopService.ShopReactivate(Id, _context);

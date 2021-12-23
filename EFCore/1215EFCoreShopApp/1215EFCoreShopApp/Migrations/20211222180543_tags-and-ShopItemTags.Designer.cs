@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _1215EFCoreShopApp.Data;
 
 namespace _1215EFCoreShopApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211222180543_tags-and-ShopItemTags")]
+    partial class tagsandShopItemTags
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,7 +86,7 @@ namespace _1215EFCoreShopApp.Migrations
                         new
                         {
                             Id = 1,
-                            ExpiryDate = new DateTime(2021, 12, 23, 19, 31, 13, 65, DateTimeKind.Utc).AddTicks(2881),
+                            ExpiryDate = new DateTime(2021, 12, 22, 18, 5, 43, 95, DateTimeKind.Utc).AddTicks(7943),
                             IsDeleted = false,
                             Name = "Phone",
                             ShopId = 1
@@ -92,7 +94,7 @@ namespace _1215EFCoreShopApp.Migrations
                         new
                         {
                             Id = 2,
-                            ExpiryDate = new DateTime(2021, 12, 23, 19, 31, 13, 65, DateTimeKind.Utc).AddTicks(3266),
+                            ExpiryDate = new DateTime(2021, 12, 22, 18, 5, 43, 95, DateTimeKind.Utc).AddTicks(8446),
                             IsDeleted = false,
                             Name = "Bread",
                             ShopId = 2
@@ -100,7 +102,7 @@ namespace _1215EFCoreShopApp.Migrations
                         new
                         {
                             Id = 3,
-                            ExpiryDate = new DateTime(2021, 12, 23, 19, 31, 13, 65, DateTimeKind.Utc).AddTicks(3271),
+                            ExpiryDate = new DateTime(2021, 12, 22, 18, 5, 43, 95, DateTimeKind.Utc).AddTicks(8455),
                             IsDeleted = false,
                             Name = "TV",
                             ShopId = 1
@@ -108,7 +110,7 @@ namespace _1215EFCoreShopApp.Migrations
                         new
                         {
                             Id = 4,
-                            ExpiryDate = new DateTime(2021, 12, 23, 19, 31, 13, 65, DateTimeKind.Utc).AddTicks(3273),
+                            ExpiryDate = new DateTime(2021, 12, 22, 18, 5, 43, 95, DateTimeKind.Utc).AddTicks(8456),
                             IsDeleted = false,
                             Name = "Milk",
                             ShopId = 2
@@ -116,7 +118,7 @@ namespace _1215EFCoreShopApp.Migrations
                         new
                         {
                             Id = 5,
-                            ExpiryDate = new DateTime(2021, 12, 23, 19, 31, 13, 65, DateTimeKind.Utc).AddTicks(3276),
+                            ExpiryDate = new DateTime(2021, 12, 22, 18, 5, 43, 95, DateTimeKind.Utc).AddTicks(8459),
                             IsDeleted = false,
                             Name = "Beef",
                             ShopId = 2
@@ -131,14 +133,11 @@ namespace _1215EFCoreShopApp.Migrations
                     b.Property<int>("ShopItemId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
                     b.HasKey("TagId", "ShopItemId");
 
                     b.HasIndex("ShopItemId");
 
-                    b.ToTable("ShopItemTags");
+                    b.ToTable("ShopItemsTags");
                 });
 
             modelBuilder.Entity("_1215EFCoreShopApp.Models.Tag", b =>
@@ -201,7 +200,7 @@ namespace _1215EFCoreShopApp.Migrations
                         .IsRequired();
 
                     b.HasOne("_1215EFCoreShopApp.Models.Tag", "Tag")
-                        .WithMany("ShopItemsTags")
+                        .WithMany("ShopItemTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -223,7 +222,7 @@ namespace _1215EFCoreShopApp.Migrations
 
             modelBuilder.Entity("_1215EFCoreShopApp.Models.Tag", b =>
                 {
-                    b.Navigation("ShopItemsTags");
+                    b.Navigation("ShopItemTags");
                 });
 #pragma warning restore 612, 618
         }

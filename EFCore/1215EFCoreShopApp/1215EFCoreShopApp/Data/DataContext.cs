@@ -13,6 +13,8 @@ namespace _1215EFCoreShopApp.Data
     {
         public DbSet<Shop> Shops { get; set; }
         public DbSet<ShopItem> ShopItems { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<ShopItemTag> ShopItemTags { get; set; } //typo, will roll with it
 
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
@@ -20,6 +22,8 @@ namespace _1215EFCoreShopApp.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ShopItemTag>().HasKey(bc => new { bc.TagId, bc.ShopItemId });
+
             modelBuilder.Entity<Shop>().HasData(
                 new Shop()
                 {
@@ -32,6 +36,23 @@ namespace _1215EFCoreShopApp.Data
                     Name = "Groceries"
                 }
             );
+            modelBuilder.Entity<Tag>().HasData(
+                new Tag()
+                {
+                    Id = 1,
+                    Name = "Free Shipping"
+                },
+                new Tag()
+                {
+                    Id = 2,
+                    Name = "Cheap"
+                },
+                new Tag()
+                {
+                    Id = 3,
+                    Name = "Brand"
+                }
+    );
             modelBuilder.Entity<ShopItem>().HasData(
                 new ShopItem()
                 {
@@ -68,6 +89,10 @@ namespace _1215EFCoreShopApp.Data
             modelBuilder.Entity<Shop>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
             modelBuilder.Entity<ShopItem>().Property<bool>("IsDeleted");
             modelBuilder.Entity<ShopItem>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
+            modelBuilder.Entity<Tag>().Property<bool>("IsDeleted");
+            modelBuilder.Entity<Tag>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
+            modelBuilder.Entity<ShopItemTag>().Property<bool>("IsDeleted");
+            modelBuilder.Entity<ShopItemTag>().HasQueryFilter(m => EF.Property<bool>(m, "IsDeleted") == false);
 
         }
         public override int SaveChanges()

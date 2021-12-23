@@ -22,22 +22,24 @@ namespace _1215EFCoreShopApp.Services
             dataContext.Shops.Add(shop);
             dataContext.SaveChanges();
         }
+
         public void ShopUpdate(Shop shop, DataContext dataContext)
         {
             dataContext.Shops.Update(shop);
             dataContext.SaveChanges();
         }
+
         public void ShopDelete(int Id, DataContext dataContext)
         {
             Shop shop = dataContext.Shops.Find(Id);
             dataContext.Shops.Remove(shop);
             dataContext.SaveChanges();
         }
+
         public void ShopReactivate(int Id, DataContext dataContext)
         {
             Shop shop = dataContext.Shops.IgnoreQueryFilters().Single(x => x.Id == Id);
             shop.IsDeleted = false;
-            //dataContext.Shops.Update(shop);
             dataContext.SaveChanges();
         }
     }

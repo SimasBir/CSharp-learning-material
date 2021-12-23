@@ -9,7 +9,6 @@
             <th scope="col">Name</th>
             <th scope="col">Location</th>
             <th scope="col">ExpiryDate</th>
-            <th scope="col">Tags</th>
             <th scope="col" style="width: 20%">Controls</th>
         </tr>
     </thead>
@@ -21,19 +20,6 @@
                 <td>@item.Name</td>
                 <td>@Html.DisplayFor(ModelItem => item.Shops.Name)</td>
                 <td>@item.ExpiryDate</td>
-                <td>
-                    <ul>
-                        @if (item.ShopItemTags != null)
-                        {
-                            @foreach (var tag in item.ShopItemTags.ToList())
-                            {
-                                <li>
-                                    @tag.Tag.Name
-                                </li>
-                            }
-                        }
-                    </ul>
-                </td>
                 <td>
                     @Html.ActionLink("Update", "ShopItemUpdate", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-secondary" })
                     @Html.ActionLink("Delete", "ShopItemDelete", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-danger" })
