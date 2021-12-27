@@ -30,6 +30,7 @@ namespace _1215EFCoreShopApp
             services.AddDbContext<DataContext>(d => d.UseSqlServer(defaultConnection));
             services.AddControllersWithViews();
             services.AddTransient<ShopService>();
+            services.AddTransient<TagService>();
             services.AddTransient<ShopItemService>();
         }
 

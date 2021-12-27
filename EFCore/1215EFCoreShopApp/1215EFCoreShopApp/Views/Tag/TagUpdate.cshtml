@@ -1,0 +1,16 @@
+﻿@model Tag
+
+@using (Html.BeginForm("TagUpdate", "Tag", FormMethod.Post))
+{
+    @Html.LabelFor(a => a.Name)
+    @Html.TextBoxFor(a => a.Name)
+    @Html.ValidationMessageFor(a => a.Name)
+    <br />
+    @Html.LabelFor(a => a.IsDeleted)
+    @Html.TextBoxFor(a => a.IsDeleted)
+    @Html.ValidationMessageFor(a => a.IsDeleted)
+    <br />
+
+
+    <input type="submit" value="Submit" />
+}

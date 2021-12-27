@@ -61,7 +61,8 @@ namespace _1215EFCoreShopApp.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(createShopItem);
+                CreateShopItem item = _shopItemService.ShopItemEmpty(_context);
+                return View(item);
             }
 
             _shopItemService.ShopItemAdd(createShopItem, _context);
@@ -77,6 +78,11 @@ namespace _1215EFCoreShopApp.Controllers
         [HttpPost]
         public IActionResult ShopItemUpdate(CreateShopItem createShopItem)
         {
+            if (!ModelState.IsValid)
+            {
+                CreateShopItem item = _shopItemService.ShopItemFind(createShopItem.ShopItem.Id, _context);
+                return View(item);
+            }
             _shopItemService.ShopItemUpdate(createShopItem, _context);
             return RedirectToAction("Index");
         }

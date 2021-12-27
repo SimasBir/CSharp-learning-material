@@ -110,6 +110,9 @@ namespace _1215EFCoreShopApp.Data
                     case EntityState.Added:
                         entry.CurrentValues["IsDeleted"] = false;
                         break;
+                    case EntityState.Modified:
+                        entry.CurrentValues["IsDeleted"] = false;
+                        break;
                     case EntityState.Deleted:
                         entry.State = EntityState.Modified;
                         entry.CurrentValues["IsDeleted"] = true;

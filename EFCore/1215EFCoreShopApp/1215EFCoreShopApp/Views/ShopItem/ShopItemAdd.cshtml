@@ -2,23 +2,24 @@
 
 @using (Html.BeginForm("ShopItemAdd", "ShopItem", FormMethod.Post))
 {
-    @Html.HiddenFor(a => a.ShopItem.Id)
+    @*@Html.HiddenFor(a => a.ShopItem.Id)*@
+
     @Html.LabelFor(a => a.ShopItem.Name)
     @Html.TextBoxFor(a => a.ShopItem.Name)
     @Html.ValidationMessageFor(a => a.ShopItem.Name)
     <br />
     @Html.LabelFor(a => a.ShopItem.ExpiryDate)
     @Html.TextBoxFor(a => a.ShopItem.ExpiryDate)
-    @Html.ValidationMessageFor(a => a.ShopItem.ExpiryDate)
+    @*@Html.ValidationMessageFor(a => a.ShopItem.ExpiryDate)*@
     <br />
     @Html.LabelFor(a => a.ShopItem.Shops)
     @Html.DropDownListFor(a => a.ShopItem.ShopId,new SelectList(@Model.ShopList,"Id","Name"))
-    @Html.ValidationMessageFor(a => a.ShopItem.ShopId)
+    @*@Html.ValidationMessageFor(a => a.ShopItem.ShopId)*@
     <br />
 
     @Html.LabelFor(a => a.ShopItem.ShopItemTags)
     @Html.ListBoxFor(a => a.SelectedTagIds,new SelectList(@Model.Tags,"Id","Name"))
-    @Html.ValidationMessageFor(a => a.ShopItem.ShopItemTags)
+    @*@Html.ValidationMessageFor(a => a.ShopItem.ShopItemTags)*@
     <br />
     <input type="submit" value="Submit" />
 }

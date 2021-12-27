@@ -49,14 +49,16 @@ namespace _1215EFCoreShopApp.Services
             createShopItem.ShopList = dataContext.Shops.ToList();
             dataContext.ShopItems.Add(createShopItem.ShopItem);
             dataContext.SaveChanges();
-
-            foreach (int tagId in createShopItem.SelectedTagIds)
+            if (createShopItem.SelectedTagIds != null)
             {
-                dataContext.ShopItemTags.Add(new ShopItemTag()
+                foreach (int tagId in createShopItem.SelectedTagIds)
                 {
-                    TagId = tagId,
-                    ShopItemId = createShopItem.ShopItem.Id
-                });
+                    dataContext.ShopItemTags.Add(new ShopItemTag()
+                    {
+                        TagId = tagId,
+                        ShopItemId = createShopItem.ShopItem.Id
+                    });
+                }
             }
             dataContext.SaveChanges();
         }
@@ -74,12 +76,12 @@ namespace _1215EFCoreShopApp.Services
 
         public void ShopItemUpdate(CreateShopItem createShopItem, DataContext dataContext)
         {
-            try
-            {
-                    ShopItemTag tagToRemove = dataContext.ShopItemTags.Single(t => t.ShopItemId == createShopItem.ShopItem.Id);
-                    dataContext.ShopItemTags.Remove(tagToRemove);
-            }
-            catch { }
+            //try
+            //{
+            List<ShopItemTag> tagsToRemove = dataContext.ShopItemTags.Where(t => t.ShopItemId == createShopItem.ShopItem.Id).ToList();
+            dataContext.ShopItemTags.RemoveRange(tagsToRemove);
+            //}
+            //catch { }
             dataContext.ShopItems.Update(createShopItem.ShopItem);
             dataContext.SaveChanges();
 
@@ -87,11 +89,31 @@ namespace _1215EFCoreShopApp.Services
             {
                 foreach (int tagId in createShopItem.SelectedTagIds)
                 {
-                    dataContext.ShopItemTags.Add(new ShopItemTag()
+                    ShopItemTag created = dataContext.ShopItemTags.IgnoreQueryFilters()
+                        .Where(t => t.TagId == tagId)
+                        .Where(a => a.ShopItemId == createShopItem.ShopItem.Id)
+                        .FirstOrDefault();
+                    //IgnoreQueryFilters().Include(i => i.Shops).Where(i => i.IsDeleted == true).ToList();
+                    //.Find(tagId, createShopItem.ShopItem.Id);
+                    //.FirstOrDefault(s => s.ShopItemId == createShopItem.ShopItem.Id);
+                    //Find(tagId, createShopItem.ShopItem.Id);
+                    //new ShopItemTag()
+                    //{
+                    //    TagId = tagId,
+                    //    ShopItemId = createShopItem.ShopItem.Id
+                    //});
+                    if (created != null)
                     {
-                        TagId = tagId,
-                        ShopItemId = createShopItem.ShopItem.Id
-                    });
+                        dataContext.ShopItemTags.Update(created);
+                    }
+                    else
+                    {
+                        dataContext.ShopItemTags.Add(new ShopItemTag()
+                        {
+                            TagId = tagId,
+                            ShopItemId = createShopItem.ShopItem.Id
+                        });
+                    }
                 }
                 dataContext.SaveChanges();
             }
@@ -103,12 +125,8 @@ namespace _1215EFCoreShopApp.Services
             dataContext.ShopItems.Remove(shopItem);
             dataContext.SaveChanges();
 
-            try
-            {
-                ShopItemTag tagToRemove = dataContext.ShopItemTags.Single(t => t.ShopItemId == Id);
-                dataContext.ShopItemTags.Remove(tagToRemove);
-            }
-            catch { }
+            List<ShopItemTag> tagsToRemove = dataContext.ShopItemTags.Where(t => t.ShopItemId == Id).ToList();
+            dataContext.ShopItemTags.RemoveRange(tagsToRemove);
             dataContext.SaveChanges();
         }
     }
