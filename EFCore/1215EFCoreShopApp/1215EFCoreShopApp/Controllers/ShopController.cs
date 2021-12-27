@@ -32,7 +32,6 @@ namespace _1215EFCoreShopApp.Controllers
         public IActionResult ShopAdd()
         {
             Shop shop = new Shop();
-
             return View(shop);
         }
 
@@ -56,6 +55,10 @@ namespace _1215EFCoreShopApp.Controllers
         [HttpPost]
         public IActionResult ShopUpdate(Shop shop)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(shop);
+            }
             _shopService.ShopUpdate(shop, _context);
             return RedirectToAction("ShopIndex");
         }

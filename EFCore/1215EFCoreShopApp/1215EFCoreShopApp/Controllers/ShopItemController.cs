@@ -97,5 +97,11 @@ namespace _1215EFCoreShopApp.Controllers
         {
             return View();
         }
+
+        public IActionResult ShopItemReactivate(int Id)
+        {
+            _shopItemService.ShopItemReactivate(Id, _context);
+            return RedirectToAction("DeletedIndex");
+        }
     }
 }

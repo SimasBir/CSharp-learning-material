@@ -9,6 +9,7 @@
             <th scope="col">Name</th>
             <th scope="col">Location</th>
             <th scope="col">ExpiryDate</th>
+            <th scope="col"style="width: 20%"></th>
             <th scope="col" style="width: 20%">Controls</th>
         </tr>
     </thead>
@@ -20,6 +21,16 @@
                 <td>@item.Name</td>
                 <td>@Html.DisplayFor(ModelItem => item.Shops.Name)</td>
                 <td>@item.ExpiryDate</td>
+                 @if (@item.IsDeleted==true)
+                    {
+                        <td class="table-warning">@Html.ActionLink("Reactivate", "ShopItemReactivate", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-success" })</td>
+                    }
+                    else
+                    {
+                        <td></td>
+                        
+                    }
+                
                 <td>
                     @Html.ActionLink("Update", "ShopItemUpdate", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-secondary" })
                     @Html.ActionLink("Delete", "ShopItemDelete", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-danger" })

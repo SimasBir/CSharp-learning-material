@@ -76,15 +76,13 @@ namespace _1215EFCoreShopApp.Services
 
         public void ShopItemUpdate(CreateShopItem createShopItem, DataContext dataContext)
         {
-            //try
-            //{
+            //Removing all tags for that item
             List<ShopItemTag> tagsToRemove = dataContext.ShopItemTags.Where(t => t.ShopItemId == createShopItem.ShopItem.Id).ToList();
             dataContext.ShopItemTags.RemoveRange(tagsToRemove);
-            //}
-            //catch { }
             dataContext.ShopItems.Update(createShopItem.ShopItem);
             dataContext.SaveChanges();
 
+            //Adding (or reactivating) new chosen ones
             if (createShopItem.SelectedTagIds != null)
             {
                 foreach (int tagId in createShopItem.SelectedTagIds)
@@ -93,15 +91,7 @@ namespace _1215EFCoreShopApp.Services
                         .Where(t => t.TagId == tagId)
                         .Where(a => a.ShopItemId == createShopItem.ShopItem.Id)
                         .FirstOrDefault();
-                    //IgnoreQueryFilters().Include(i => i.Shops).Where(i => i.IsDeleted == true).ToList();
-                    //.Find(tagId, createShopItem.ShopItem.Id);
-                    //.FirstOrDefault(s => s.ShopItemId == createShopItem.ShopItem.Id);
-                    //Find(tagId, createShopItem.ShopItem.Id);
-                    //new ShopItemTag()
-                    //{
-                    //    TagId = tagId,
-                    //    ShopItemId = createShopItem.ShopItem.Id
-                    //});
+
                     if (created != null)
                     {
                         dataContext.ShopItemTags.Update(created);
@@ -127,6 +117,12 @@ namespace _1215EFCoreShopApp.Services
 
             List<ShopItemTag> tagsToRemove = dataContext.ShopItemTags.Where(t => t.ShopItemId == Id).ToList();
             dataContext.ShopItemTags.RemoveRange(tagsToRemove);
+            dataContext.SaveChanges();
+        }
+        public void ShopItemReactivate(int Id, DataContext dataContext)
+        {
+            ShopItem shopItem = dataContext.ShopItems.IgnoreQueryFilters().Single(x => x.Id == Id);
+            shopItem.IsDeleted = false;
             dataContext.SaveChanges();
         }
     }

@@ -32,6 +32,7 @@ namespace _1215EFCoreShopApp
             services.AddTransient<ShopService>();
             services.AddTransient<TagService>();
             services.AddTransient<ShopItemService>();
+            services.AddTransient<GenericService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

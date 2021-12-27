@@ -32,7 +32,6 @@ namespace _1215EFCoreShopApp.Controllers
         public IActionResult TagAdd()
         {
             Tag tag = new Tag();
-
             return View(tag);
         }
 
@@ -56,6 +55,10 @@ namespace _1215EFCoreShopApp.Controllers
         [HttpPost]
         public IActionResult TagUpdate(Tag tag)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(tag);
+            }
             _tagService.TagUpdate(tag, _context);
             return RedirectToAction("TagIndex");
         }
