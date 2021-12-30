@@ -1,0 +1,65 @@
+﻿@using _1228RegistrationApp.Dtos
+@model Entry
+
+@using (Html.BeginForm("RegistrationSave", "Registration", FormMethod.Post))
+{
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Registracijos požymiai</th>
+                <th scope="col">Reikšmė</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i<@Model.Prompts.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Model.Prompts[i].Description
+                    </td>
+                    <td>
+@*                        <select value="@Model.Prompts[i].ValueId" name="@Model.Prompts[i].ValueId" id="@Model.Prompts[i].ValueId" class="form-select" aria-label="">
+                            <option selected></option>
+                            @foreach (var value in Model.Values.Where(t => t.ValueGroup == @Model.Prompts[i].ValueGroupId))
+                            {
+                                <option value="@value.Id">@value.Description</option>
+                            }
+                        </select>*@
+
+                        @Html.HiddenFor(m=>m.Prompts[i].Id)
+
+                        @{int valGId = @Model.Prompts[i].ValueGroupId;}
+                        @Html.DropDownListFor(a=>a.Prompts[i].ValueId, new SelectList(@Model.Values.Where(i => i.ValueGroup == valGId), "Id", "Description"),"")
+                        
+                    </td>
+                </tr>
+            }
+
+@*            @foreach (var item in Model.Prompts)
+            {
+                @Html.HiddenFor(modelItem => item.Id)
+                <tr>
+                    <td>@item.Description</td>
+                    <td>
+                       
+
+                        <select value="@item.ValueId" name="@item.ValueId" id="@item.ValueId" class="form-select" aria-label="">
+                            <option selected></option>
+                            @foreach (var value in Model.Values.Where(t => t.ValueGroup == item.ValueGroupId))
+                            {
+                                <option value="@value.Id">@value.Description</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            }*@
+        </tbody>
+    </table>
+    <input type="submit" value="Koreguoti pažymius"/>
+    <input type="submit" value="Saugoti pataisymus" name="Submit" />
+    <input type="submit" value="Atšaukti pataisymus" name="Submit" />
+}
+@*@Html.ActionLink("Update", "ShopItemUpdate", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-secondary" })
+@Html.ActionLink("Delete", "ShopItemDelete", "ShopItem", new { id = @item.Id }, new { @class= "btn btn-danger" })*@
+
+ @*@Html.DropDownListFor(ModelItem => item.ValueId, new SelectList(@Model.Values.Where(i => i.ValueGroup == item.ValueGroupId),"Id","Description"))*@
