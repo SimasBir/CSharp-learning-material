@@ -37,10 +37,12 @@ namespace _1228RegistrationApp.Controllers
                 case "Saugoti pataisymus":
 
                     var prompts = _context.Prompts.Include(i => i.Values).ToList();
-
+                    var i = 0;
                     foreach (var prompt in prompts)
                     {
-                        prompt.ValueId = entry.Prompts[prompt.Id-1].ValueId;
+                        //prompt.ValueId = entry.Prompts[prompt.Id].ValueId;
+                        prompt.ValueId = entry.Prompts[i].ValueId;
+                        i += 1;
                         _context.Prompts.Update(prompt);
                     }
                     //_context.Prompts.UpdateRange(entry.Prompts);

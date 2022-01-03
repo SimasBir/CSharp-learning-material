@@ -9,9 +9,7 @@ namespace _1228RegistrationApp.Dtos
 {
     public class Entry
     {
-        //public Prompt Prompt { get; set; }
         public List<Prompt> Prompts { get; set; }
         public List<Value> Values { get; set; }
-        //public List<int> SelectedValueIds { get; set; }
     }
 }
