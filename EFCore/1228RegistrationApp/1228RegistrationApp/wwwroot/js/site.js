@@ -14,11 +14,9 @@ for (var i = 0; i < button.length; i++) {
 }
 //add event listener
 clickBtn.addEventListener('click', function (event) {
+    clickBtn.disabled = true;
     for (var i = 0; i < button.length; i++) {
         button[i].disabled = !button[i].disabled;
     }
 });
 
-//button.addEventListener('click', function (event) {
-//    alert('Enabled!');
-//});
