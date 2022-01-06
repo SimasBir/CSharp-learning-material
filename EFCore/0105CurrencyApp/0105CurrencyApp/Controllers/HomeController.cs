@@ -20,11 +20,10 @@ namespace _0105CurrencyApp.Controllers
 
         }
         [HttpPost]
-        public IActionResult List(Date date)
+        public IActionResult List(DateFormat date)
         {
             if (date.SelectedDate != null)
             {
-
                 int currentDate = int.Parse(date.SelectedDate.ToString("yyyyMMdd"));
                 int previousDate = int.Parse(date.SelectedDate.AddDays(-1).ToString("yyyyMMdd"));
 
@@ -77,7 +76,6 @@ namespace _0105CurrencyApp.Controllers
                     //        Mismatch = currencies[i].Name
                     //    });
                     //}
-
                 }
                 List<RateDTO> orderedRates = rates.OrderByDescending(x => x.RateDifference).ToList();
 
@@ -85,17 +83,20 @@ namespace _0105CurrencyApp.Controllers
             }
             else
             {
+                
                 return View();
             }
         }
 
         public IActionResult Index()
         {
-            return View();
+            DateFormat startTime = new DateFormat();
+            startTime.SelectedDate = DateTime.Parse("2014-04-04");
+            return View(startTime);
         }
 
         [HttpPost]
-        public IActionResult Index(Date date)
+        public IActionResult Index(DateFormat date)
         {
 
             return RedirectToAction("List", new { date = date });

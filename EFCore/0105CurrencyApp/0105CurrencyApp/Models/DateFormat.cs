@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _0105CurrencyApp.Models
 {
-    public class Date
+    public class DateFormat
     {
         public DateTime SelectedDate { get; set; } 
     }
