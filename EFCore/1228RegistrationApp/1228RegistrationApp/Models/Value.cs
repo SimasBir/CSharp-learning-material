@@ -13,6 +13,5 @@ namespace _1228RegistrationApp.Models
         public string Description { get; set; }
         public int ValueGroup { get; set; }
         public List<Prompt> Prompts { get; set; }
-
     }
 }

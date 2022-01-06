@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1228RegistrationApp.Models
+namespace _0105CurrencyApp.Models
 {
-    public abstract class Entity
+    public class Date
     {
-        public int Id { get; set; }
+        public DateTime SelectedDate { get; set; } 
     }
 }

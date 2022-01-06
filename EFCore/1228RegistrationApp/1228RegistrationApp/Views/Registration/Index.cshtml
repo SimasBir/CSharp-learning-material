@@ -22,10 +22,10 @@
                         @{
                             int valGId = @Model.Prompts[i].ValueGroupId; /*To filter by ValueGroupId - couldn't make it inline in SelectList*/
                         }
-                        @Html.DropDownListFor(a=>a.Prompts[i].ValueId, 
-                            new SelectList(@Model.Values.Where(i => i.ValueGroup == valGId), "Id", "Description"),
-                            "",
-                            new { @class = "Inactive" })
+                        @Html.DropDownListFor(a=>a.Prompts[i].ValueId,
+                new SelectList(@Model.Values.Where(i => i.ValueGroup == valGId), "Id", "Description"),
+                "",
+                new { @class = "Inactive" })
                     </td>
                 </tr>
             }

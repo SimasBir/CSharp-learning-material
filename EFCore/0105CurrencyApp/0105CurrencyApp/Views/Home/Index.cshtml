@@ -1,0 +1,9 @@
+﻿@model Date
+@using (Html.BeginForm("List", "Home", FormMethod.Post))
+{
+    @Html.LabelFor(a=>a.SelectedDate)
+    @*@Html.TextBoxFor(a=>a.SelectedDate)*@
+    @Html.EditorFor(a=>a.SelectedDate)
+
+    <input type="submit" value="Sumbit" />
+}

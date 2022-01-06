@@ -1,0 +1,25 @@
+﻿@model List<_0105CurrencyApp.Dtos.RateDTO>
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">Currency</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Previous Rate</th>
+            <th scope="col">Current Rate</th>
+            <th scope="col">Rate Difference</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="container">
+                <th scope="row">@item.Name</th>
+                <td>@item.Unit</td>
+                <td>@item.PreviousRate</td>
+                <td>@item.CurrentRate</td>
+                <td>@item.RateDifference</td>
+            </tr>
+        }
+    </tbody>
+</table>
