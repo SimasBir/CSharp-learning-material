@@ -91,7 +91,7 @@ namespace _0105CurrencyApp.Controllers
         public IActionResult Index()
         {
             DateFormat startTime = new DateFormat();
-            startTime.SelectedDate = DateTime.Parse("2014-04-04");
+            startTime.SelectedDate = DateTime.Parse("2014-09-01");
             return View(startTime);
         }
 
