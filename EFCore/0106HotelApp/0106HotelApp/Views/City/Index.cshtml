@@ -1,0 +1,7 @@
+﻿@model List<City>
+
+@foreach(var city in @Model){
+    <li>
+        @city.Id , @city.Name
+    </li>
+}
