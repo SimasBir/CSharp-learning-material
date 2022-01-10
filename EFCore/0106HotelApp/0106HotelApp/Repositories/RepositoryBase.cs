@@ -23,5 +23,27 @@ namespace _0106HotelApp.Repositories
         {
             return _dbSet.ToList();
         }
+        public T GetById(int id)
+        {
+            return _dbSet.FirstOrDefault(t => t.Id == id);
+        }
+        public void Create(T entity)
+        {
+            _context.Add(entity);
+            _context.SaveChanges();
+        }
+        public void Update(T entity)
+        {
+            _context.Update(entity);
+            _context.SaveChanges();
+        }
+        public void Delete(int entityId)
+        {
+            var entity = GetById(entityId);
+            _context.Remove(entity);
+            _context.SaveChanges();
+        }
+
+
     }
 }

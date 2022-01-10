@@ -1,0 +1,17 @@
+﻿@model City
+
+@using (Html.BeginForm("Update", "City", FormMethod.Post))
+{
+    <div>
+        City @Html.LabelFor(a=>a.Name)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Name)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Name)
+            </small>
+        </div>
+    </div>
+    <input type="submit" value="Submit" />
+}

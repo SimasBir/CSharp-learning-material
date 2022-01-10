@@ -59,7 +59,7 @@ namespace _0106HotelApp
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=City}/{action=Index}/{id?}");
             });
         }
     }

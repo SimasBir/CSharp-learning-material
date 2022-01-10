@@ -14,5 +14,11 @@ namespace _0106HotelApp.Repositories
         {
 
         }
+
+        //public void Create(City city)
+        //{
+        //    base.Create(city);
+        //    //_context.SaveChanges();
+        //}
     }
 }
