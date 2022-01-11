@@ -16,24 +16,20 @@ namespace _0106HotelApp.Controllers
         {
             _cityRepository = cityRepository;
         }
-
         public IActionResult Index()
         {
             return View(_cityRepository.GetAll());
         }
-
         public IActionResult Add()
         {
             City city = new City();
             return View(city);
         }
-
         [HttpPost]
         public IActionResult Add(City city)
         {
             if (!ModelState.IsValid)
             {
-                //jei neatitinka reikalavimu / create validation
                 return View();
             }
             _cityRepository.Create(city);
@@ -44,13 +40,11 @@ namespace _0106HotelApp.Controllers
             City city = _cityRepository.GetById(Id);
             return View(city);
         }
-
         [HttpPost]
         public IActionResult Update(City city)
         {
             if (!ModelState.IsValid)
             {
-                //jei neatitinka reikalavimu / create validation
                 return View(city);
             }
             _cityRepository.Update(city);

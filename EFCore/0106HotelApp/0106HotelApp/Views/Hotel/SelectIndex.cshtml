@@ -9,7 +9,7 @@
             <th scope="col">#</th>
             <th scope="col">Adresas</th>
             <th scope="col">Miestas</th>
-            <th scope="col" style="width: 20%">Admin</th>
+            <th scope="col" style="width: 20%">Room list</th>
         </tr>
     </thead>
     <tbody>
@@ -20,8 +20,8 @@
                 <td>@hotel.Address</td>
                 <td>@hotel.City.Name</td>
                 <td>
-                    @Html.ActionLink("Update","Update", "Hotel", new {id = @hotel.Id } ,new { @class= "btn btn-secondary" })
-                    @Html.ActionLink("Delete","Delete", "Hotel", new {id = @hotel.Id } ,new { @class= "btn btn-danger" })
+@*                    @Html.ActionLink("Update","Update", "Hotel", new {id = @hotel.Id } ,new { @class= "btn btn-secondary" })
+                    @Html.ActionLink("Delete","Delete", "Hotel", new {id = @hotel.Id } ,new { @class= "btn btn-danger" })*@
                 </td>
             </tr>
         }

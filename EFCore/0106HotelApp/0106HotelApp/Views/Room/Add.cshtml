@@ -1,0 +1,48 @@
+﻿@model _0106HotelApp.Dtos.CreateRoom
+
+@using (Html.BeginForm("Add", "Room", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(a=>a.Room.Number)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Room.Number)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Room.Number)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(a=>a.Room.Floor)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Room.Floor)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Room.Floor)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(a=>a.Room.HotelId)
+    </div>
+    <div>
+        @Html.DropDownListFor(a=>a.Room.HotelId, new SelectList(@Model.AllHotels,"Id", "Address"))
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Room.HotelId)
+            </small>
+        </div>
+    </div>
+    <div class="form-check">
+         @Html.EditorFor(a=>a.Room.NeedsCleaning, new { htmlAttributes = new { @class = "form-check-input",@type="checkbox", @id="gridCheck1" } })
+        <label class="form-check-label" for="gridCheck1">
+          Needs Cleaning 
+        </label>
+      </div>
+
+    @Html.ActionLink("Cancel","Index", "Room","" ,new { @class= "mt-2 btn btn-secondary" })
+    <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
+}
+

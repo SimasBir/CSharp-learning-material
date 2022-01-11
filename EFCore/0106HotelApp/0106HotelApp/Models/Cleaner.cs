@@ -15,6 +15,8 @@ namespace _0106HotelApp.Models
         [Required]
         [MinLength(2)]
         public string Surname { get; set; }
+        public City City { get; set; }
+        [Required]
         public int CityId { get; set; }
         public List<CleanerRoom> CleanerRooms { get; set; }
     }

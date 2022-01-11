@@ -1,0 +1,41 @@
+﻿@model _0106HotelApp.Dtos.CreateCleaner
+
+@using (Html.BeginForm("Add", "Cleaner", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(a=>a.Cleaner.Name)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Cleaner.Name)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Cleaner.Name)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(a=>a.Cleaner.Surname)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Cleaner.Surname)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Cleaner.Surname)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(a=>a.Cleaner.CityId)
+    </div>
+    <div>
+        @Html.DropDownListFor(a=>a.Cleaner.CityId, new SelectList(@Model.AllCities,"Id", "Name"))
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Cleaner.CityId)
+            </small>
+        </div>
+    </div>
+    @Html.ActionLink("Cancel","Index", "Cleaner","" ,new { @class= "mt-2 btn btn-secondary" })
+    <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
+}
+

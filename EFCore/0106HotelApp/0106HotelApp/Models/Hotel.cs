@@ -9,6 +9,8 @@ namespace _0106HotelApp.Models
 {
     public class Hotel : Entity
     {
+        public City City { get; set; }
+        [Required]
         public int CityId { get; set; }
         [Required]
         [MinLength(2)]

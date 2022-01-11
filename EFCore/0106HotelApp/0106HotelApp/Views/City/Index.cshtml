@@ -1,6 +1,6 @@
 ﻿@model List<City>
-<div>
-@Html.ActionLink("Add new City","Add","City","", new { @class= "btn btn-primary" })
+<div class="mb-2">
+    @Html.ActionLink("Add new city","Add","City","", new { @class= "btn btn-primary" })
 </div>
 
 <table class="table">
@@ -8,6 +8,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Miestas</th>
+            <th scope="col" style="width: 30%">Tasks</th>
             <th scope="col" style="width: 20%">Admin</th>
         </tr>
     </thead>
@@ -17,6 +18,10 @@
             <tr>
                 <th scope="row">@city.Id</th>
                 <td>@city.Name</td>
+                <td>
+                    @Html.ActionLink("Hotels","SelectIndex", "Hotel", new {id = @city.Id } ,new { @class= "btn btn-success" })
+                    @Html.ActionLink("Cleaners","SelectIndex", "Cleaner", new {id = @city.Id } ,new { @class= "btn btn-success" })
+                </td>
                 <td>
                     @Html.ActionLink("Update","Update", "City", new {id = @city.Id } ,new { @class= "btn btn-secondary" })
                     @Html.ActionLink("Delete","Delete", "City", new {id = @city.Id } ,new { @class= "btn btn-danger" })

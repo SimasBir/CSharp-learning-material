@@ -17,7 +17,6 @@ namespace _0106HotelApp.Controllers
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
