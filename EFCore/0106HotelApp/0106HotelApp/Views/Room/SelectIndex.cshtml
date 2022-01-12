@@ -1,6 +1,6 @@
-﻿@model List<Room>
+﻿@model _0106HotelApp.Dtos.CreateHotelRoom
 <div class="mb-2">
-    @Html.ActionLink("Add new room","Add","Room","", new { @class= "btn btn-primary" })
+    @Html.ActionLink("Add new room","AddSpecific","Room", new {hotelId = @Model.SelectedHotel}, new { @class= "btn btn-primary" })
 </div>
 
 <table class="table">
@@ -17,9 +17,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var room in @Model)
+
+        @foreach (var room in @Model.Rooms)
         {
             <tr>
+
                 <th scope="row">@room.Id</th>
                 <td>@room.Number</td>
                 <td>@room.Floor</td>
@@ -28,8 +30,15 @@
                 <td>@(room.Booked ? "Užimtas" : "Tuščias")</td>
                 <td>@(room.NeedsCleaning ? "Reikia" : "Nereikia")</td>
                 <td>
-                    @Html.ActionLink("Update","Update", "Room", new {id = @room.Id } ,new { @class= "btn btn-secondary" })
-                    @Html.ActionLink("Delete","Delete", "Room", new {id = @room.Id } ,new { @class= "btn btn-danger" })
+                    @if (@room.Booked != true)
+                    {
+                        @Html.ActionLink("Book","Book", "Room", new {id = @room.Id}, new { @class= "btn btn-secondary" })
+                    }
+                    else if (@room.NeedsCleaning != true)
+                    {
+                        @Html.ActionLink("Leave","Leave", "Room", new {id = @room.Id}, new { @class= "btn btn-secondary" })
+                    }
+                        @Html.ActionLink("Assign Cleaner","AssignCleaner", "Room", new {id = @room.Id}, new { @class= "btn btn-secondary" })
                 </td>
             </tr>
         }

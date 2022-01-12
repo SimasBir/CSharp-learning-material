@@ -14,10 +14,12 @@ namespace _0106HotelApp.Controllers
     {
         private RoomRepository _roomRepository;
         private HotelRepository _hotelRepository;
-        public RoomController(RoomRepository roomRepository, HotelRepository hotelRepository)
+        private CleanerRepository _cleanerRepository;
+        public RoomController(RoomRepository roomRepository, HotelRepository hotelRepository, CleanerRepository cleanerRepository)
         {
             _roomRepository = roomRepository;
             _hotelRepository = hotelRepository;
+            _cleanerRepository = cleanerRepository;
         }
         public IActionResult Index()
         {
@@ -25,7 +27,13 @@ namespace _0106HotelApp.Controllers
         }
         public IActionResult SelectIndex(int Id)
         {
-            return View(_roomRepository.GetSome(Id));
+            CreateHotelRoom createHotelRoom = new CreateHotelRoom()
+            {
+                Rooms = _roomRepository.GetSome(Id),
+                SelectedHotel = Id,
+                //AssignedRooms = 
+            };
+            return View(createHotelRoom);
         }
         public IActionResult Add()
         {
@@ -47,10 +55,29 @@ namespace _0106HotelApp.Controllers
             _roomRepository.Create(createRoom.Room);
             return RedirectToAction("Index");
         }
+
+        public IActionResult AddSpecific(int hotelId)
+        {
+            Room room = new Room()
+            {
+                HotelId = hotelId,
+            };
+            return View(room);
+        }
+        [HttpPost]
+        public IActionResult AddSpecific(Room room)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            _roomRepository.Create(room);
+            return RedirectToAction("SelectIndex", new { Id = room.HotelId });
+        }
+
         public IActionResult Delete(int id)
         {
             _roomRepository.Delete(id);
-
             return RedirectToAction("Index");
         }
         public IActionResult Update(int id)
@@ -73,5 +100,41 @@ namespace _0106HotelApp.Controllers
             _roomRepository.Update(createRoom.Room);
             return RedirectToAction("Index");
         }
+        public IActionResult Book(int Id)
+        {
+            //safety jei jau bookintas?
+            Room currentRoom = _roomRepository.Book(Id);
+            return RedirectToAction("SelectIndex", new { Id = currentRoom.HotelId });
+        }
+        public IActionResult Leave(int Id)
+        {
+            Room currentRoom = _roomRepository.Leave(Id);
+            return RedirectToAction("SelectIndex", new { Id = currentRoom.HotelId });
+        }
+        public IActionResult Clean(int Id)
+        {
+            Room currentRoom = _roomRepository.Clean(Id);
+            return RedirectToAction("SelectIndex", new { Id = currentRoom.HotelId });
+        }
+
+        public IActionResult AssignCleaner(int Id)
+        {
+            Room room = _roomRepository.GetById(Id);
+            int cityId = _hotelRepository.GetById(room.HotelId).CityId;
+            AssignCleaner assignCleaner = new AssignCleaner()
+            {
+                Room = room,
+                AllCleaners = _cleanerRepository.GetSome(cityId)
+            };
+            return View(assignCleaner);
+        }
+
+        [HttpPost]
+        public IActionResult AssignCleaner(AssignCleaner assignCleaner)
+        {
+            _roomRepository.Assign(assignCleaner.Room.Id, assignCleaner.CleanerId);
+            return RedirectToAction("SelectIndex", new { Id = assignCleaner.Room.HotelId });
+        }
+
     }
 }

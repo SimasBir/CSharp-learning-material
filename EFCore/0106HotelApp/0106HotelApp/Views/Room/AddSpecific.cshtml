@@ -1,0 +1,45 @@
+﻿@model Room
+
+@using (Html.BeginForm("AddSpecific", "Room", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(a=>a.Number)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Number)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Number)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(a=>a.Floor)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Floor)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Floor)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.HiddenFor(a=>a.HotelId)
+        @Html.LabelFor(a=>a.HotelId)
+    </div>
+    <div>
+        @Html.TextBoxFor(a=>a.HotelId, new {disabled= "disabled" })
+    </div>
+
+@*    <div class="form-check">
+         @Html.EditorFor(a=>a.NeedsCleaning, new { htmlAttributes = new { @class = "form-check-input",@type="checkbox", @id="gridCheck1" } })
+        <label class="form-check-label" for="gridCheck1">
+          Needs Cleaning 
+        </label>
+      </div>*@
+
+    @Html.ActionLink("Cancel","SelectedIndex", "Room", new {hotelId = @Model.HotelId},new { @class= "mt-2 btn btn-secondary" })
+    <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
+}
+

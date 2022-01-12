@@ -1,0 +1,47 @@
+﻿@model _0106HotelApp.Dtos.AssignCleaner
+
+@using (Html.BeginForm("AssignCleaner", "Room", FormMethod.Post))
+{
+    @*<div>
+        @Html.LabelFor(a=>a.Number)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Number)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Number)
+            </small>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(a=>a.Floor)
+    </div>
+    <div>
+        @Html.EditorFor(a=>a.Floor)
+        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Floor)
+            </small>
+        </div>
+    </div>
+*@
+        @Html.HiddenFor(a=>a.Room.Id)
+        @Html.HiddenFor(a=>a.Room.HotelId)
+
+
+    <div>
+        @Html.LabelFor(a=>a.AllCleaners)
+    </div>
+    <div>
+        @Html.DropDownListFor(a=>a.CleanerId, new SelectList(@Model.AllCleaners,"Id", "Name"))
+@*        <div class="text-danger">
+            <small>
+                @Html.ValidationMessageFor(a=>a.Cleaner.CityId)
+            </small>
+        </div>*@
+    </div>
+
+    @*@Html.ActionLink("Cancel","SelectedIndex", "Room", new {hotelId = @Model.HotelId},new { @class= "mt-2 btn btn-secondary" })*@
+    <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
+}
+

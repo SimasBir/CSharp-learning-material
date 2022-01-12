@@ -43,7 +43,5 @@ namespace _0106HotelApp.Repositories
             _context.Remove(entity);
             _context.SaveChanges();
         }
-
-
     }
 }
