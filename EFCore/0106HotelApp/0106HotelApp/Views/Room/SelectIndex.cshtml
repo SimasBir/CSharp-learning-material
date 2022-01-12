@@ -10,6 +10,9 @@
             <th scope="col">Numeris</th>
             <th scope="col">Aukštas</th>
             <th scope="col">Hotelis</th>
+            <th scope="col">Miestas</th>
+            <th scope="col">Užimtas</th>
+            <th scope="col">Reikia valyti</th>
             <th scope="col" style="width: 20%">Admin</th>
         </tr>
     </thead>
@@ -21,9 +24,12 @@
                 <td>@room.Number</td>
                 <td>@room.Floor</td>
                 <td>@room.Hotel.Address</td>
+                <td>@room.Hotel.City.Name</td>
+                <td>@(room.Booked ? "Užimtas" : "Tuščias")</td>
+                <td>@(room.NeedsCleaning ? "Reikia" : "Nereikia")</td>
                 <td>
-                    @Html.ActionLink("Book","Book", "Room", new {id = @room.Id } ,new { @class= "btn btn-primary" })
-                    @Html.ActionLink("Clean","Clean", "Room", new {id = @room.Id } ,new { @class= "btn btn-info" })
+                    @Html.ActionLink("Update","Update", "Room", new {id = @room.Id } ,new { @class= "btn btn-secondary" })
+                    @Html.ActionLink("Delete","Delete", "Room", new {id = @room.Id } ,new { @class= "btn btn-danger" })
                 </td>
             </tr>
         }

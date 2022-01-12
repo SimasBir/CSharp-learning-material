@@ -21,7 +21,7 @@ namespace _0106HotelApp.Repositories
         }
         public List<Room> GetSome(int Id)
         {
-            return _context.Rooms.Include(c => c.Hotel).Where(c => c.HotelId == Id).ToList();
+            return _context.Rooms.Include(c => c.Hotel).ThenInclude(h => h.City).Where(c => c.HotelId == Id).ToList();
         }
     }
 }
