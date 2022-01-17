@@ -26,12 +26,21 @@ namespace _0106HotelApp.Repositories
         }
         public List<Room> GetSomeCity(int Id)
         {
-            List<Room> dirtyRooms = _context.Rooms.Where(h => h.Hotel.CityId == Id)
+            List<Room> allRooms = _context.Rooms.Where(h => h.Hotel.CityId == Id)
                 .Include(c => c.Hotel)
                 .Include(b => b.CleanerRooms).ThenInclude(cr => cr.Cleaner)
                 .ToList();
-            var dirtRoom = dirtyRooms.Where(a => a.CleanerRooms.Count == 0).ToList(); //kaip reiktu filtruoti, kad paimtu ir tuos kurie jau buvo cleaned?
-            return dirtRoom;
+
+            List<Room> dirtyRooms = new List<Room>();
+            foreach (Room room in allRooms)
+            {
+                int assignedRooms = _context.CleanerRooms.Where(a => a.Cleaned == false).Where(b => b.RoomId == room.Id).Count();
+                if (assignedRooms == 0)
+                {
+                    dirtyRooms.Add(room);
+                }
+            }
+            return dirtyRooms;
         }
         public Room Book(int Id)
         {

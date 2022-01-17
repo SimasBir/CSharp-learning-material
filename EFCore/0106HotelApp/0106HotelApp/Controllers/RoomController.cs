@@ -117,7 +117,7 @@ namespace _0106HotelApp.Controllers
             AssignCleaner assignCleaner = new AssignCleaner()
             {
                 Room = room,
-                AllCleaners = _cleanerRepository.GetSome(cityId)
+                AllCleaners = _cleanerRepository.GetSomeFiltered(cityId)
             };
             return View(assignCleaner);
         }

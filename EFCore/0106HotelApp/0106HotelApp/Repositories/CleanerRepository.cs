@@ -21,9 +21,24 @@ namespace _0106HotelApp.Repositories
         }
         public List<Cleaner> GetSome(int Id)
         {
-            return _context.Cleaners.Include(c => c.City).Where(c => c.CityId == Id).
-                Include(b=>b.CleanerRooms).ThenInclude(cr=>cr.Room).
+            List<Cleaner> allCityCleaners = _context.Cleaners.Include(c => c.City).Where(c => c.CityId == Id).
+                Include(b => b.CleanerRooms).ThenInclude(cr => cr.Room).
                 ToList();
+            return allCityCleaners;
+        }
+        public List<Cleaner> GetSomeFiltered(int Id)
+        {
+            var allCityCleaners = GetSome(Id);
+            List<Cleaner> freeCleaners = new List<Cleaner>();
+            foreach (Cleaner cleaner in allCityCleaners)
+            {
+                int assignedRooms = _context.CleanerRooms.Where(a => a.Cleaned == false).Where(b => b.CleanerId == cleaner.Id).Count();
+                if (assignedRooms < 5)
+                {
+                    freeCleaners.Add(cleaner);
+                }
+            }
+            return freeCleaners;
         }
         public List<CleanerRoom> AssignedRooms(int Id)
         {
