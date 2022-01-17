@@ -21,7 +21,7 @@ namespace _0106HotelApp.Repositories
         public List<Room> GetSome(int Id)
         {
             return _context.Rooms.Include(c => c.Hotel).ThenInclude(h => h.City).
-                Include(b=>b.CleanerRooms).ThenInclude(cr=>cr.Cleaner).
+                Include(b => b.CleanerRooms).ThenInclude(cr => cr.Cleaner).
                 Where(c => c.HotelId == Id).ToList();
         }
         public List<Room> GetSomeCity(int Id)
@@ -30,7 +30,6 @@ namespace _0106HotelApp.Repositories
                 .Include(c => c.Hotel)
                 .Include(b => b.CleanerRooms).ThenInclude(cr => cr.Cleaner)
                 .ToList();
-
             List<Room> dirtyRooms = new List<Room>();
             foreach (Room room in allRooms)
             {
@@ -58,8 +57,8 @@ namespace _0106HotelApp.Repositories
         }
         public void Assign(int roomId, int cleanerId)
         {
-            CleanerRoom cleanerRoom = _context.CleanerRooms.Where(r=>r.RoomId == roomId).Where(c=>c.CleanerId == cleanerId).FirstOrDefault();
-            if(cleanerRoom != null)
+            CleanerRoom cleanerRoom = _context.CleanerRooms.Where(r => r.RoomId == roomId).Where(c => c.CleanerId == cleanerId).FirstOrDefault();
+            if (cleanerRoom != null)
             {
                 cleanerRoom.Cleaned = false;
                 _context.CleanerRooms.Update(cleanerRoom);
@@ -88,7 +87,6 @@ namespace _0106HotelApp.Repositories
             }
             catch
             {
-
             }
             _context.SaveChanges();
         }

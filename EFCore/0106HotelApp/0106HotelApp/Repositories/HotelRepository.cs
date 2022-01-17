@@ -13,7 +13,6 @@ namespace _0106HotelApp.Repositories
     {
         public HotelRepository(DataContext context) : base(context)
         {
-
         }
         public new List<Hotel> GetAll()
         {

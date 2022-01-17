@@ -54,7 +54,6 @@ namespace _0106HotelApp.Controllers
             _roomRepository.Create(createRoom.Room);
             return RedirectToAction("Index");
         }
-
         public IActionResult AddSpecific(int hotelId)
         {
             Room room = new Room()
@@ -73,7 +72,6 @@ namespace _0106HotelApp.Controllers
             _roomRepository.Create(room);
             return RedirectToAction("SelectIndex", new { Id = room.HotelId });
         }
-
         public IActionResult Delete(int id)
         {
             _roomRepository.Delete(id);
@@ -101,7 +99,6 @@ namespace _0106HotelApp.Controllers
         }
         public IActionResult Book(int Id)
         {
-            //safety jei jau bookintas?
             Room currentRoom = _roomRepository.Book(Id);
             return RedirectToAction("SelectIndex", new { Id = currentRoom.HotelId });
         }
@@ -121,7 +118,6 @@ namespace _0106HotelApp.Controllers
             };
             return View(assignCleaner);
         }
-
         [HttpPost]
         public IActionResult AssignCleaner(AssignCleaner assignCleaner)
         {

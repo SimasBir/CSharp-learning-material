@@ -13,7 +13,6 @@ namespace _0106HotelApp.Repositories
     {
         public CleanerRepository(DataContext context) : base(context)
         {
-
         }
         public new List<Cleaner> GetAll()
         {

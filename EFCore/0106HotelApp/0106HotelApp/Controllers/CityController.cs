@@ -40,7 +40,7 @@ namespace _0106HotelApp.Controllers
             return RedirectToAction("Index");
         }
         public IActionResult Update(int Id)
-        { 
+        {
             City city = _cityRepository.GetById(Id);
             return View(city);
         }

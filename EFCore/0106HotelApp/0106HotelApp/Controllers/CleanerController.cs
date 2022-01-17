@@ -75,7 +75,6 @@ namespace _0106HotelApp.Controllers
             _cleanerRepository.Update(createCleaner.Cleaner);
             return RedirectToAction("Index");
         }
-
         public IActionResult AssignRoom(int Id)
         {
             Cleaner cleaner = _cleanerRepository.GetById(Id);
@@ -89,19 +88,16 @@ namespace _0106HotelApp.Controllers
             };
             return View(assignRoom);
         }
-
         [HttpPost]
         public IActionResult AssignRoom(AssignRoom assignRoom)
         {
             _roomRepository.Assign(assignRoom.RoomId, assignRoom.Cleaner.Id);
             return RedirectToAction("SelectIndex", new { Id = assignRoom.Cleaner.CityId });
         }
-
         public IActionResult CleanedRoom(int RoomId, int CleanerId)
         {
             _roomRepository.CleanedRoom(RoomId, CleanerId);
             Cleaner cleaner = _cleanerRepository.GetById(CleanerId);
-
             return RedirectToAction("SelectIndex", new { Id = cleaner.CityId });
         }
     }

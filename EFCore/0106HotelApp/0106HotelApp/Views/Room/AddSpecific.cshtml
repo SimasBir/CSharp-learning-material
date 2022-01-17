@@ -31,14 +31,6 @@
     <div>
         @Html.TextBoxFor(a=>a.HotelId, new {disabled= "disabled" })
     </div>
-
-@*    <div class="form-check">
-         @Html.EditorFor(a=>a.NeedsCleaning, new { htmlAttributes = new { @class = "form-check-input",@type="checkbox", @id="gridCheck1" } })
-        <label class="form-check-label" for="gridCheck1">
-          Needs Cleaning 
-        </label>
-      </div>*@
-
     @Html.ActionLink("Cancel","SelectedIndex", "Room", new {hotelId = @Model.HotelId},new { @class= "mt-2 btn btn-secondary" })
     <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
 }

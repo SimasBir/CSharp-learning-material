@@ -12,8 +12,7 @@
             <th scope="col">Hotelis</th>
             <th scope="col">Miestas</th>
             <th scope="col">Užimtas</th>
-            @*<th scope="col">Reikia valyti</th>*@
-            <th scope="col" @*style="width: 30%"*@>Admin</th>
+            <th scope="col">Admin</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +27,6 @@
                 <td>@room.Hotel.Address</td>
                 <td>@room.Hotel.City.Name</td>
                 <td>@(room.Booked ? "Užimtas" : "Tuščias")</td>
-                @*<td>@(room.NeedsCleaning ? "Reikia" : "Nereikia")</td>*@
                 <td>
                     @if (@room.Booked != true)
                     {

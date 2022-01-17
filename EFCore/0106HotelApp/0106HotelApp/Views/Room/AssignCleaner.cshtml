@@ -11,14 +11,6 @@
     </div>
     <div>
         @Html.DropDownListFor(a=>a.CleanerId, new SelectList(@Model.AllCleaners,"Id", "Name"))
-@*        <div class="text-danger">
-            <small>
-                @Html.ValidationMessageFor(a=>a.Cleaner.CityId)
-            </small>
-        </div>*@
-    </div>
-
-    @*@Html.ActionLink("Cancel","SelectedIndex", "Room", new {hotelId = @Model.HotelId},new { @class= "mt-2 btn btn-secondary" })*@
     <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
 }
 

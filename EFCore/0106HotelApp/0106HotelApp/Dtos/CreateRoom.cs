@@ -11,7 +11,5 @@ namespace _0106HotelApp.Dtos
     {
         public Room Room { get; set; }
         public List<Hotel> AllHotels { get; set; }
-
-        //public List<CleanerRoom> AssignedRooms { get; set; }
     }
 }
