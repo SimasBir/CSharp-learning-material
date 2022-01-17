@@ -14,10 +14,12 @@ namespace _0106HotelApp.Controllers
     {
         private CleanerRepository _cleanerRepository;
         private CityRepository _cityRepository;
-        public CleanerController(CleanerRepository cleanerRepository, CityRepository cityRepository)
+        private RoomRepository _roomRepository;
+        public CleanerController(CleanerRepository cleanerRepository, CityRepository cityRepository,RoomRepository roomRepository)
         {
             _cleanerRepository = cleanerRepository;
             _cityRepository = cityRepository;
+            _roomRepository = roomRepository;
         }
         public IActionResult Index()
         {
@@ -72,6 +74,35 @@ namespace _0106HotelApp.Controllers
             }
             _cleanerRepository.Update(createCleaner.Cleaner);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult AssignRoom(int Id)
+        {
+            Cleaner cleaner = _cleanerRepository.GetById(Id);
+            int cityId = cleaner.CityId;
+
+            AssignRoom assignRoom = new AssignRoom()
+            {
+                Cleaner = cleaner,
+                AllRooms = _roomRepository.GetSomeCity(cityId),
+                AssignedRooms = _cleanerRepository.AssignedRooms(cleaner.Id)
+            };
+            return View(assignRoom);
+        }
+
+        [HttpPost]
+        public IActionResult AssignRoom(AssignRoom assignRoom)
+        {
+            _roomRepository.Assign(assignRoom.RoomId, assignRoom.Cleaner.Id);
+            return RedirectToAction("SelectIndex", new { Id = assignRoom.Cleaner.CityId });
+        }
+
+        public IActionResult CleanedRoom(int RoomId, int CleanerId)
+        {
+            _roomRepository.CleanedRoom(RoomId, CleanerId);
+            Cleaner cleaner = _cleanerRepository.GetById(CleanerId);
+
+            return RedirectToAction("SelectIndex", new { Id = cleaner.CityId });
         }
     }
 }

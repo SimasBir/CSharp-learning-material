@@ -6,25 +6,19 @@
 <table class="table">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Miestas</th>
-            <th scope="col" style="width: 30%">Tasks</th>
-            <th scope="col" style="width: 20%">Admin</th>
+            <th scope="col">Hotels</th>
+            <th scope="col">Cleaners</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var city in @Model)
         {
             <tr>
-                <th scope="row">@city.Id</th>
-                <td>@city.Name</td>
+                <th scope="row">
+                    @Html.ActionLink(@city.Name + " Hotels","SelectIndex", "Hotel", new {id = @city.Id } ,new { @class= "btn btn-success" })
+                </th>
                 <td>
-                    @Html.ActionLink("Hotels","SelectIndex", "Hotel", new {id = @city.Id } ,new { @class= "btn btn-success" })
-                    @Html.ActionLink("Cleaners","SelectIndex", "Cleaner", new {id = @city.Id } ,new { @class= "btn btn-success" })
-                </td>
-                <td>
-                    @Html.ActionLink("Update","Update", "City", new {id = @city.Id } ,new { @class= "btn btn-secondary" })
-                    @Html.ActionLink("Delete","Delete", "City", new {id = @city.Id } ,new { @class= "btn btn-danger" })
+                    @Html.ActionLink(@city.Name + " Cleaners","SelectIndex", "Cleaner", new {id = @city.Id } ,new { @class= "btn btn-success" })
                 </td>
             </tr>
         }

@@ -1,0 +1,54 @@
+﻿@model _0106HotelApp.Dtos.AssignRoom
+
+@using (Html.BeginForm("AssignRoom", "Cleaner", FormMethod.Post))
+{
+
+    @Html.HiddenFor(a=>a.Cleaner.Id)
+    @Html.HiddenFor(a=>a.Cleaner.CityId)
+
+
+    <div>
+        @Html.LabelFor(a=>a.AllRooms)
+    </div>
+    <div>
+        @Html.DropDownListFor(a=>a.RoomId, new SelectList(@Model.AllRooms,"Id", "NumberHotel"))
+    </div>
+    @if (@Model.AssignedRooms.Count < 5)
+    {
+        
+        <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
+    }
+    else
+    {
+        <div>5 kambariai jau priskirti</div>
+    }
+}
+
+<h2>Currently assigned:</h2>
+<table class="table table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hotelio adresas</th>
+            <th scope="col">Kambarys</th>
+            <th scope="col" style="width: 20%">Išvalyta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in @Model.AssignedRooms)
+        {
+
+            <tr>
+                <th scope="row">@room.RoomId</th>
+                <td>@room.Room.Hotel.Address</td>
+                <td>@room.Room.Number</td>
+                <td>
+                    @Html.ActionLink("Išvalyta","CleanedRoom", "Cleaner", 
+                    new {RoomId = @room.RoomId, CleanerId = @room.CleanerId}, 
+                    new { @class= "btn btn-secondary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

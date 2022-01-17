@@ -24,6 +24,15 @@ namespace _0106HotelApp.Repositories
                 Include(b=>b.CleanerRooms).ThenInclude(cr=>cr.Cleaner).
                 Where(c => c.HotelId == Id).ToList();
         }
+        public List<Room> GetSomeCity(int Id)
+        {
+            List<Room> dirtyRooms = _context.Rooms.Where(h => h.Hotel.CityId == Id)
+                .Include(c => c.Hotel)
+                .Include(b => b.CleanerRooms).ThenInclude(cr => cr.Cleaner)
+                .ToList();
+            var dirtRoom = dirtyRooms.Where(a => a.CleanerRooms.Count == 0).ToList(); //kaip reiktu filtruoti, kad paimtu ir tuos kurie jau buvo cleaned?
+            return dirtRoom;
+        }
         public Room Book(int Id)
         {
             Room currentRoom = GetById(Id);
@@ -34,26 +43,44 @@ namespace _0106HotelApp.Repositories
         public Room Leave(int Id)
         {
             Room currentRoom = GetById(Id);
-            currentRoom.NeedsCleaning = true;
-            Update(currentRoom);
-            return currentRoom;
-        }
-        public Room Clean(int Id)
-        {
-            Room currentRoom = GetById(Id);
             currentRoom.Booked = false;
-            currentRoom.NeedsCleaning = false;
             Update(currentRoom);
             return currentRoom;
         }
         public void Assign(int roomId, int cleanerId)
         {
-            _context.CleanerRooms.Add(new CleanerRoom
+            CleanerRoom cleanerRoom = _context.CleanerRooms.Where(r=>r.RoomId == roomId).Where(c=>c.CleanerId == cleanerId).FirstOrDefault();
+            if(cleanerRoom != null)
             {
-                RoomId = roomId,
-                CleanerId = cleanerId,
+                cleanerRoom.Cleaned = false;
+                _context.CleanerRooms.Update(cleanerRoom);
+            }
+            else
+            {
+                _context.CleanerRooms.Add(new CleanerRoom
+                {
+                    RoomId = roomId,
+                    CleanerId = cleanerId
 
-            });
+                });
+            }
+            _context.SaveChanges();
+        }
+        public void CleanedRoom(int roomId, int cleanerId)
+        {
+            try
+            {
+                _context.CleanerRooms.Update(new CleanerRoom
+                {
+                    RoomId = roomId,
+                    CleanerId = cleanerId,
+                    Cleaned = true
+                });
+            }
+            catch
+            {
+
+            }
             _context.SaveChanges();
         }
     }

@@ -10,7 +10,7 @@
             <th scope="col">Vardas</th>
             <th scope="col">Pavardė</th>
             <th scope="col">Miestas</th>
-            <th scope="col" style="width: 20%">Assign</th>
+            <th scope="col"@* style="width: 20%"*@>Assign</th>
         </tr>
     </thead>
     <tbody>
@@ -22,8 +22,7 @@
                 <td>@cleaner.Surname</td>
                 <td>@cleaner.City.Name</td>
                 <td>
-@*                    @Html.ActionLink("Update","Update", "Cleaner", new {id = @cleaner.Id } ,new { @class= "btn btn-secondary" })
-                    @Html.ActionLink("Delete","Delete", "Cleaner", new {id = @cleaner.Id } ,new { @class= "btn btn-danger" })*@
+                    @Html.ActionLink("Assign room","AssignRoom", "Cleaner", new {id = @cleaner.Id}, new { @class= "btn btn-secondary" })
                 </td>
             </tr>
         }

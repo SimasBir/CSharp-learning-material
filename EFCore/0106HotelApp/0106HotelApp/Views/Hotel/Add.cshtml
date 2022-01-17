@@ -1,8 +1,7 @@
 ﻿@model _0106HotelApp.Dtos.CreateHotel
 
-@using (Html.BeginForm("Update", "Hotel", FormMethod.Post))
+@using (Html.BeginForm("Add", "Hotel", FormMethod.Post))
 {
-    @Html.HiddenFor(a=>a.Hotel.Id)
     <div>
         @Html.LabelFor(a=>a.Hotel.Address)
     </div>
@@ -14,7 +13,7 @@
             </small>
         </div>
     </div>
-        <div>
+    <div>
         @Html.LabelFor(a=>a.Hotel.CityId)
     </div>
     <div>
@@ -28,3 +27,4 @@
     @Html.ActionLink("Cancel","Index", "Hotel","" ,new { @class= "mt-2 btn btn-secondary" })
     <input type="submit" value="Submit" class="mt-2 btn btn-primary" />
 }
+

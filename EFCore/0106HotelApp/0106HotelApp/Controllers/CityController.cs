@@ -20,6 +20,10 @@ namespace _0106HotelApp.Controllers
         {
             return View(_cityRepository.GetAll());
         }
+        public IActionResult IndexAdmin()
+        {
+            return View(_cityRepository.GetAll());
+        }
         public IActionResult Add()
         {
             City city = new City();

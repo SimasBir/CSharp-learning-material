@@ -31,7 +31,6 @@ namespace _0106HotelApp.Controllers
             {
                 Rooms = _roomRepository.GetSome(Id),
                 SelectedHotel = Id,
-                //AssignedRooms = 
             };
             return View(createHotelRoom);
         }
@@ -111,12 +110,6 @@ namespace _0106HotelApp.Controllers
             Room currentRoom = _roomRepository.Leave(Id);
             return RedirectToAction("SelectIndex", new { Id = currentRoom.HotelId });
         }
-        public IActionResult Clean(int Id)
-        {
-            Room currentRoom = _roomRepository.Clean(Id);
-            return RedirectToAction("SelectIndex", new { Id = currentRoom.HotelId });
-        }
-
         public IActionResult AssignCleaner(int Id)
         {
             Room room = _roomRepository.GetById(Id);
@@ -135,6 +128,5 @@ namespace _0106HotelApp.Controllers
             _roomRepository.Assign(assignCleaner.Room.Id, assignCleaner.CleanerId);
             return RedirectToAction("SelectIndex", new { Id = assignCleaner.Room.HotelId });
         }
-
     }
 }

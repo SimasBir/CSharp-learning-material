@@ -2,29 +2,6 @@
 
 @using (Html.BeginForm("AssignCleaner", "Room", FormMethod.Post))
 {
-    @*<div>
-        @Html.LabelFor(a=>a.Number)
-    </div>
-    <div>
-        @Html.EditorFor(a=>a.Number)
-        <div class="text-danger">
-            <small>
-                @Html.ValidationMessageFor(a=>a.Number)
-            </small>
-        </div>
-    </div>
-    <div>
-        @Html.LabelFor(a=>a.Floor)
-    </div>
-    <div>
-        @Html.EditorFor(a=>a.Floor)
-        <div class="text-danger">
-            <small>
-                @Html.ValidationMessageFor(a=>a.Floor)
-            </small>
-        </div>
-    </div>
-*@
         @Html.HiddenFor(a=>a.Room.Id)
         @Html.HiddenFor(a=>a.Room.HotelId)
 

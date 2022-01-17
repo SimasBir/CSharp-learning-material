@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace _0106HotelApp.Dtos
 {
-    public class CreateCleaner
+    public class AssignRoom
     {
         public Cleaner Cleaner { get; set; }
-        public List<City> AllCities { get; set; }
+        public int RoomId { get; set; }
+        public List<Room> AllRooms { get; set; }
+        public List<CleanerRoom> AssignedRooms { get; set; }
     }
 }
